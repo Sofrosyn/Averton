@@ -1,4 +1,4 @@
 package com.virmana.Iplayer.ui.activities;
 
-public class VideoListAllActivity {
+public class ReadNewsActivity {
 }
