@@ -1,6 +1,5 @@
 package com.virmana.Iplayer.ui.activities;
 
-import android.os.Environment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -65,7 +64,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (position <6){
                     view_pager_slide.setCurrentItem(position+1);
                 }else{
-                    Intent intent = new Intent(IntroActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.enter, R.anim.exit);
                     finish();
@@ -76,7 +75,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (text_view_next_done.getText().equals("DONE")){
-                    Intent intent = new Intent(IntroActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.enter, R.anim.exit);
                     finish();
@@ -111,7 +110,7 @@ public class IntroActivity extends AppCompatActivity {
         this.linear_layout_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(IntroActivity.this,HomeActivity.class);
+                Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
                 finish();

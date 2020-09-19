@@ -4,37 +4,21 @@ package com.virmana.Iplayer.ui.fragments;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.provider.MediaStore;
-import android.webkit.MimeTypeMap;
-import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
-import com.virmana.Iplayer.Provider.PrefManager;
+import android.webkit.MimeTypeMap;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.virmana.Iplayer.R;
-import com.virmana.Iplayer.entity.*;
-import com.virmana.Iplayer.ui.Adapters.ChannelAdapter;
-import com.virmana.Iplayer.ui.Adapters.MusicAdapter;
+import com.virmana.Iplayer.entity.News;
 import com.virmana.Iplayer.ui.Adapters.NewsAdapter;
-import timber.log.Timber;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
