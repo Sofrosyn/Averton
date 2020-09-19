@@ -1,0 +1,215 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.HomeFragment">
+
+<LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" >
+
+
+        <com.synnapps.carouselview.CarouselView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer" app:indicatorGravity="bottom|center_horizontal"
+                                                app:fillColor="#FFFFFFFF" app:pageColor="#00000000" app:radius="6dp" android:id="@+id/carousel_home_fragment"
+                                                app:slideInterval="5000" app:strokeColor="#FF777777" app:strokeWidth="1dp" android:elevation="8dp"/>
+
+
+    </RelativeLayout>
+
+
+
+
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"  android:scrollbars="vertical"  android:layout_marginBottom="8dp">
+
+      <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+
+
+        <LinearLayout
+                android:id="@+id/relative_layout_popular_f"
+                android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                android:weightSum="6"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical"
+
+                android:layout_marginTop="8dp">
+
+<!--Trending -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                  android:text="Trending" android:textStyle="bold" android:textSize="18dp" />
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
+                          android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
+               <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
+               android:textColor="@color/white"  android:layout_margin="2dp"/>
+            </LinearLayout>
+</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_home_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            />
+
+            </LinearLayout>
+
+<!--End Trending Movie-->
+
+            <!--Pick of the Week-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                              android:text="Pick of the Week" android:textStyle="bold" android:textSize="18dp" />
+
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
+                                  android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
+                                  android:textColor="@color/white"  android:layout_margin="2dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_home_video_pickOfTheWeek"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       />
+
+            </LinearLayout>
+<!--End Pick of the Week-->
+
+
+          <!--Bill board 100-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical">
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
+                          >
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                  android:text="BillBoard 100" android:textStyle="bold" android:textSize="18dp"  />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
+                              android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp" android:textAlignment="center"
+                              android:textColor="@color/white"  android:layout_margin="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_home_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            />
+        </LinearLayout>
+            <!--End Bill board 100-->
+
+
+
+            <!--Hottest Vibes 100-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
+                              >
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                              android:text="Hottest Vibes" android:textStyle="bold" android:textSize="18dp"  />
+
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
+                                  android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp" android:textAlignment="center"
+                                  android:textColor="@color/white"  android:layout_margin="2dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_home_music_hottestVibes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+            <!--End Hottest Vibes 100-->
+
+<!--Local news-->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
+                          android:layout_marginTop="4dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                  android:text="Local" android:textStyle="bold" android:textSize="18dp"  />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
+                              android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp" android:textAlignment="center"
+                              android:textColor="@color/white"  android:layout_margin="2dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_home_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        />
+        </LinearLayout>
+<!--End Local News-->
+
+            <!--international news-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+
+                    android:orientation="vertical">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
+                              android:layout_marginTop="4dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                              android:text="International" android:textStyle="bold" android:textSize="18dp"  />
+
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
+                                  android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp" android:textAlignment="center"
+                                  android:textColor="@color/white"  android:layout_margin="2dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_home_news_international"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+            <!--End International News-->
+
+
+
+        </LinearLayout>
+
+      </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+</FrameLayout>

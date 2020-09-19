@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     android:layout_width="match_parent"
+                                                     android:layout_height="match_parent"
+                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                     xmlns:tools="http://schemas.android.com/tools"
+                                                     android:background="@color/black"
+                                                     tools:context=".ui.activities.HomeActivitys">
+
+
+
+
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/home_activity_framelayout" android:layout_marginBottom="50dp"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:layout_width="match_parent" app:menu="@menu/menu_bottom_nav"
+                                                                       android:layout_height="wrap_content" android:layout_gravity="bottom"
+                                                                       android:id="@+id/bottom_nav_home"
+                                                                       android:layout_marginBottom="8dp"
+                                                                       app:itemTextColor="@color/white"
+                                                                       app:backgroundTint="@color/gray"
+                                                                       app:hideOnScroll="true"
+                                                                       app:labelVisibilityMode="labeled"
+                                                                       android:layout_marginLeft="16dp" android:layout_marginRight="16dp" app:elevation="4dp"
+                                                                       />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

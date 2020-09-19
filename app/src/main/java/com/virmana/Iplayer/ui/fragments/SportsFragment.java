@@ -2,96 +2,56 @@ package com.virmana.Iplayer.ui.fragments;
 
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.TypedValue;
-import android.widget.*;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.chip.Chip;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.DexterError;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.PermissionRequestErrorListener;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.orhanobut.hawk.Hawk;
-import com.virmana.Iplayer.Utils.Method;
-import com.virmana.Iplayer.Utils.StorageUtil;
-import com.virmana.Iplayer.Utils.VideoHelper;
-import com.virmana.Iplayer.entity.Music;
-import com.virmana.Iplayer.entity.Video;
-import com.virmana.Iplayer.ui.Adapters.MusicAdapter;
-import com.virmana.Iplayer.ui.Adapters.VideoAdapter;
-import com.virmana.Iplayer.ui.activities.HomeActivity;
-
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.virmana.Iplayer.Provider.PrefManager;
+import android.widget.VideoView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.virmana.Iplayer.R;
-import com.virmana.Iplayer.api.apiClient;
-import com.virmana.Iplayer.api.apiRest;
+import com.virmana.Iplayer.Utils.VideoHelper;
 import com.virmana.Iplayer.entity.Genre;
-import com.virmana.Iplayer.entity.Poster;
-import com.virmana.Iplayer.ui.Adapters.PosterAdapter;
-import com.virmana.Iplayer.ui.activities.PlayerActivity;
-import es.dmoral.toasty.Toasty;
+import com.virmana.Iplayer.entity.Video;
+import com.virmana.Iplayer.ui.Adapters.MovieAdapter;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MoviesFragment extends Fragment {
+public class SportsFragment extends Fragment {
 
 
     private View view;
 
     private List<Genre> genreList =  new ArrayList<>();
 
-    private RecyclerView recycler_view_movies_trending;
-    private RecyclerView recycler_view_movies_pickOfTheWeek;
-    private RecyclerView recycler_view_movies_africa;
-    private RecyclerView recycler_view_movies_hollywood;
-    private RecyclerView recycler_view_movies_bollywood;
-    private RecyclerView recycler_view_movies_nollywood;
+    private RecyclerView recycler_view_sport_trending;
+    private RecyclerView recycler_view_sport_pickOfTheWeek;
+    private RecyclerView recycler_view_sport_africa;
+    private RecyclerView recycler_view_sport_hollywood;
+    private RecyclerView recycler_view_sport_bollywood;
+    private RecyclerView recycler_view_sport_nollywood;
 
-    private ImageButton playButton;
+
 
     private final String TRENDING = "/storage/emulated/0/Averton/Movies/DOW S1/";
     private final String PICKOFTHEWEEK = "/storage/emulated/0/Averton/Movies/DOW S1/";
@@ -101,30 +61,36 @@ public class MoviesFragment extends Fragment {
     private final String NOLLYWOOD = "/storage/emulated/0/Averton/Movies/Money Heist/";
 
     private  ArrayList<Video> arrayVideo;
-    private  VideoAdapter videoAdapter;
+    private MovieAdapter movieAdapter;
 
     private VideoHelper videoHelper;
     private VideoView thriller_video;
     private int number;
 
-    final String THRILLERVIDEO = "file://"+"/storage/emulated/0/AVERTON/Movies/DOW S1/A Discovery of Witches - S01E01.mp4";
+    final String THRILLERVIDEO = "file://"+"/storage/emulated/0/AVERTON/Movies/Trailer.mp4";
 
 
 
-    public MoviesFragment() {
+    public SportsFragment() {
         // Required empty public constructor
     }
+
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_movies, container, false);
-            ;
+        view =  inflater.inflate(R.layout.fragment_sports, container, false);
 
         initView();
+
+
         initActon();
+
+
+
 
         return view;
     }
@@ -138,15 +104,15 @@ public class MoviesFragment extends Fragment {
     private void initView() {
 
 
-        this.recycler_view_movies_trending = view.findViewById(R.id.recycler_view_movies_trending);
-        this.recycler_view_movies_pickOfTheWeek = view.findViewById(R.id.recycler_view_movies_pickOfTheWeek);
-        this.recycler_view_movies_africa = view.findViewById(R.id.recycler_view_movies_africa);
-        this.recycler_view_movies_hollywood = view.findViewById(R.id.recycler_view_movies_hollywood);
-        this.recycler_view_movies_bollywood = view.findViewById(R.id.recycler_view_movies_bollywood);
-        this.recycler_view_movies_nollywood = view.findViewById(R.id.recycler_view_movies_nollywood);
+        this.recycler_view_sport_trending = view.findViewById(R.id.recycler_view_sport_trending);
+        this.recycler_view_sport_pickOfTheWeek = view.findViewById(R.id.recycler_view_sport_pickOfTheWeek);
+        this.recycler_view_sport_africa = view.findViewById(R.id.recycler_view_sport_africa);
+        this.recycler_view_sport_hollywood = view.findViewById(R.id.recycler_view_sport_hollywood);
+        this.recycler_view_sport_bollywood = view.findViewById(R.id.recycler_view_sport_bollywood);
+        this.recycler_view_sport_nollywood = view.findViewById(R.id.recycler_view_sport_nollywood);
         this.thriller_video = view.findViewById(R.id.video_Thriller);
 
-        this.playButton = view.findViewById(R.id.button_thriller);
+
 
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
@@ -154,12 +120,16 @@ public class MoviesFragment extends Fragment {
 
         }else{
 
-            fetchVideoByPath(recycler_view_movies_trending,TRENDING);
-            fetchVideoByPath(recycler_view_movies_pickOfTheWeek,PICKOFTHEWEEK);
-            fetchVideoByPath(recycler_view_movies_africa,AFRICA);
-            fetchVideoByPath(recycler_view_movies_bollywood,BOLLYWOOD);
-            fetchVideoByPath(recycler_view_movies_nollywood,NOLLYWOOD);
-            fetchVideoByPath(recycler_view_movies_hollywood,HOLLYWOOD);
+
+           fetchVideoByPath(recycler_view_sport_trending,TRENDING);
+
+            fetchVideoByPath(recycler_view_sport_pickOfTheWeek,PICKOFTHEWEEK);
+            fetchVideoByPath(recycler_view_sport_africa,AFRICA);
+            fetchVideoByPath(recycler_view_sport_bollywood,BOLLYWOOD);
+            fetchVideoByPath(recycler_view_sport_nollywood,NOLLYWOOD);
+            fetchVideoByPath(recycler_view_sport_hollywood,HOLLYWOOD);
+
+
         }
 
         Log.v("Adapter","adapter showing");
@@ -216,7 +186,7 @@ public class MoviesFragment extends Fragment {
 
             c.close();
         }
-        videoAdapter = new VideoAdapter(getActivity(),arrayVideo);
+        movieAdapter = new MovieAdapter(getActivity(),arrayVideo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -226,7 +196,7 @@ public class MoviesFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
 
-        recyclerView.setAdapter(videoAdapter);
+        recyclerView.setAdapter(movieAdapter);
 
     }
 
@@ -286,12 +256,15 @@ public class MoviesFragment extends Fragment {
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()){
 
-                    fetchVideoByPath(recycler_view_movies_trending,TRENDING);
-                    fetchVideoByPath(recycler_view_movies_pickOfTheWeek,PICKOFTHEWEEK);
-                    fetchVideoByPath(recycler_view_movies_africa,AFRICA);
-                    fetchVideoByPath(recycler_view_movies_bollywood,BOLLYWOOD);
-                    fetchVideoByPath(recycler_view_movies_nollywood,NOLLYWOOD);
-                    fetchVideoByPath(recycler_view_movies_hollywood,HOLLYWOOD);
+
+                    fetchVideoByPath(recycler_view_sport_trending,TRENDING);
+
+                    fetchVideoByPath(recycler_view_sport_pickOfTheWeek,PICKOFTHEWEEK);
+                    fetchVideoByPath(recycler_view_sport_africa,AFRICA);
+                    fetchVideoByPath(recycler_view_sport_bollywood,BOLLYWOOD);
+                    fetchVideoByPath(recycler_view_sport_nollywood,NOLLYWOOD);
+                    fetchVideoByPath(recycler_view_sport_hollywood,HOLLYWOOD);
+
 
 
                 }
@@ -313,15 +286,6 @@ public class MoviesFragment extends Fragment {
 
 
     @Override
-    public void onStart() {
-        super.onStart();
-playThriller();
-        /*playButton.setOnClickListener(v -> {
-    playThriller();
-});*/
-        }
-
-    @Override
     public void onStop() {
         super.onStop();
 stopPlayer();
@@ -330,7 +294,6 @@ stopPlayer();
     @Override
     public void onPause() {
         super.onPause();
-
         stopPlayer();
     }
 
@@ -340,9 +303,20 @@ stopPlayer();
             thriller_video.start();
         });
 
+            thriller_video.setOnCompletionListener(mp -> thriller_video.start());
     }
     public void stopPlayer(){
         thriller_video.stopPlayback();
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        playThriller();
+    }
+
+    public void pausPlayer(){
+        thriller_video.pause();
     }
 }//end of class

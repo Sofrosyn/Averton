@@ -4,23 +4,30 @@
     android:layout_height="match_parent"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.MoviesFragment">
+    tools:context=".ui.fragments.SportsFragment">
 
-    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content"  android:scrollbars="vertical"  >
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" >
+
+            <!--Video view-->
+            <VideoView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer" android:layout_alignParentLeft="true"
+                       android:layout_alignParentRight="true"
+                       android:id="@+id/video_Thriller" android:layout_centerHorizontal="true"
+                       android:layout_alignParentStart="true" android:layout_alignParentEnd="true"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AVERTON" android:textColor="@color/red" android:fontFamily="@font/averton" android:layout_alignParentRight="true"
+                      android:textStyle="bold" android:textSize="15dp" android:layout_margin="16dp" android:id="@+id/averton"  />
+
+        </RelativeLayout>
+
+
+
+
+        <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content"  android:scrollbars="vertical"  >
 
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" >
-
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" >
-
-
-                <VideoView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer"
-                                                         android:id="@+id/video_Thriller" android:layout_centerHorizontal="true"/>
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AVERTON" android:textColor="@color/red"
-                          android:textStyle="bold" android:textSize="15dp" android:layout_margin="16dp" android:id="@+id/averton" />
-<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/button_thriller" android:layout_alignParentBottom="true"
-                android:layout_margin="16dp" android:src="@drawable/exo_controls_play" android:backgroundTint="@color/red"/>
-            </RelativeLayout>
 
 
 
@@ -32,7 +39,6 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:orientation="vertical"
-                    android:layout_below="@id/relative_container_thrillers"
                     android:layout_marginTop="8dp">
 
                 <!--Trending -->
@@ -42,17 +48,13 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/red"
-                                  android:text="Trending" android:textStyle="bold" android:textSize="15dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Trending" android:textStyle="bold" android:textSize="18dp" />
 
-                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
-                                      android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-                                      android:textColor="@color/white"  android:layout_margin="2dp"/>
-                        </LinearLayout>
+
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_movies_trending"
+                            android:id="@+id/recycler_view_sport_trending"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                     />
@@ -68,17 +70,13 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/red"
-                                  android:text="Pick of the Week" android:textStyle="bold" android:textSize="15dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Pick of the Week" android:textStyle="bold" android:textSize="18dp" />
 
-                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
-                                      android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-                                      android:textColor="@color/white"  android:layout_margin="2dp"/>
-                        </LinearLayout>
+
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_movies_pickOfTheWeek"
+                            android:id="@+id/recycler_view_sport_pickOfTheWeek"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                     />
@@ -97,17 +95,13 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/red"
-                                  android:text="Africa 100" android:textStyle="bold" android:textSize="15dp"  />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="EPL" android:textStyle="bold" android:textSize="18dp"  />
 
-                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
-                                      android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-                                      android:textColor="@color/white"  android:layout_margin="2dp"/>
-                        </LinearLayout>
+
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_movies_africa"
+                            android:id="@+id/recycler_view_sport_africa"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                     />
@@ -126,17 +120,13 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/red"
-                                  android:text="Hollywood" android:textStyle="bold" android:textSize="15dp"  />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Seria A" android:textStyle="bold" android:textSize="18dp"  />
 
-                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
-                                      android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-                                      android:textColor="@color/white"  android:layout_margin="2dp"/>
-                        </LinearLayout>
+
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_movies_hollywood"
+                            android:id="@+id/recycler_view_sport_hollywood"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                     />
@@ -153,18 +143,13 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/red"
-                                  android:text="Bollywood" android:textStyle="bold" android:textSize="15dp"  />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="La Liga" android:textStyle="bold" android:textSize="18dp"  />
 
-                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
-                                      android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-                                      android:textColor="@color/white"  android:layout_margin="2dp"/>
-                        </LinearLayout>
 
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_movies_bollywood"
+                            android:id="@+id/recycler_view_sport_bollywood"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                     />
@@ -181,18 +166,13 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/red"
-                                  android:text="Nollywood" android:textStyle="bold" android:textSize="15dp"  />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Bundesliga" android:textStyle="bold" android:textSize="18dp"  />
 
-                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
-                                      android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-                                      android:textColor="@color/white"  android:layout_margin="2dp"/>
-                        </LinearLayout>
 
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_movies_nollywood"
+                            android:id="@+id/recycler_view_sport_nollywood"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                     />
@@ -205,4 +185,5 @@
 
         </RelativeLayout>
     </ScrollView>
+    </LinearLayout>
 </FrameLayout>

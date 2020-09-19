@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/nav_home"
+      android:title="Home"
+      android:icon="@drawable/ic_home"
+      android:orderInCategory="1"
+      app:showAsAction="always"
+        />
+
+    <item android:id="@+id/nav_movies"
+          android:title="Movies"
+          android:icon="@drawable/ic_movie"
+          android:orderInCategory="2"
+          app:showAsAction="always"
+    />
+    <item android:id="@+id/nav_music"
+          android:title="Music"
+          android:icon="@drawable/ic_music_note_black_24dp"
+          android:orderInCategory="3"
+          app:showAsAction="always"
+
+    />
+    <item android:id="@+id/nav_sport"
+          android:title="Sport"
+          android:icon="@drawable/ic_tv_show"
+          android:orderInCategory="4"
+          app:showAsAction="always"
+    />
+    <item android:id="@+id/nav_news"
+          android:title="News"
+          android:icon="@drawable/ic_apps"
+          android:orderInCategory="5"
+          app:showAsAction="always"
+    />
+</menu>
