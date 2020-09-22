@@ -180,7 +180,7 @@ public class MusicFragment extends Fragment {
         final int columns = getResources().getInteger(R.integer.grid_column);
         musicAdapter = new MusicAdapter(getActivity(),arrayMusic,R.drawable.album_placeholder);
         recycler_view_music_fragment.setLayoutManager(new GridLayoutManager(getActivity(),columns));
-        recycler_view_music_fragment.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+
         recycler_view_music_fragment.setItemAnimator(new DefaultItemAnimator());
         recycler_view_music_fragment.setHasFixedSize(true);
         recycler_view_music_fragment.setVerticalScrollBarEnabled(true);

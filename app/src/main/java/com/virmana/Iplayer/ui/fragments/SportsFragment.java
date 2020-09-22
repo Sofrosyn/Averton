@@ -188,7 +188,7 @@ public class SportsFragment extends Fragment {
         }
         movieAdapter = new MovieAdapter(getActivity(),arrayVideo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(10), true));
+
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 

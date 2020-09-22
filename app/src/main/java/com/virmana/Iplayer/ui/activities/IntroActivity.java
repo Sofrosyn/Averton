@@ -39,7 +39,7 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         prefManager= new PrefManager(getApplicationContext());
-
+//TODO: fix slide adapter find introadapter
         slideList.add(1);
         slideList.add(2);
         slideList.add(3);

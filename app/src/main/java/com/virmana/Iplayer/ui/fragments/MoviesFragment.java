@@ -21,6 +21,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.virmana.Iplayer.Utils.Paths;
 import com.virmana.Iplayer.Utils.VideoHelper;
 import com.virmana.Iplayer.entity.Video;
 import com.virmana.Iplayer.ui.Adapters.MovieAdapter;
@@ -71,7 +72,7 @@ public class MoviesFragment extends Fragment {
     private VideoView thriller_video;
     private int number;
 
-    final String THRILLERVIDEO = "file://"+"/storage/emulated/0/AVERTON/Movies/Trailer.mp4";
+    final String THRILLERVIDEO = Paths.thrillerVideo;
 
 
 
@@ -185,7 +186,7 @@ public class MoviesFragment extends Fragment {
         }
         movieAdapter = new MovieAdapter(getActivity(),arrayVideo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(10), true));
+
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 

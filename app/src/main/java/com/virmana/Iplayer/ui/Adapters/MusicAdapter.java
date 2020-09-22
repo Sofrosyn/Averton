@@ -10,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.virmana.Iplayer.R;
+import com.virmana.Iplayer.Utils.MetadataExtractor;
 import com.virmana.Iplayer.entity.Music;
 import com.virmana.Iplayer.ui.activities.MusicPlayerActivity;
 
@@ -22,6 +24,8 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
         private Context mContext;
         private int bitmap;
         public ArrayList<Music> albumList;
+
+        private MetadataExtractor extractor;
 
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -55,7 +59,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
         @Override
         public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-
+            extractor = new MetadataExtractor();
             Music album = albumList.get(position);
 
             holder.title.setText(album.getArtistSong());
@@ -67,7 +71,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
 
 
 
-            Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(bitmap).thumbnail(0.5f).into(holder.thumbnail);
+            Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(extractor.getCoverArt(album.getArtistPath())).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.thumbnail);
 
             holder.thumbnail.setOnClickListener(v -> {
 

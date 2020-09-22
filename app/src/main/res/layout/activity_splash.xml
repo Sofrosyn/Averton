@@ -11,6 +11,7 @@
         android:layout_centerVertical="true"
         android:src="@drawable/logo"
         android:layout_width="170dp"
+
         android:layout_height="170dp" />
     <com.greenfrvr.rubberloader.RubberLoaderView
         android:layout_centerHorizontal="true"
@@ -19,12 +20,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:loaderExtraColor="@color/pruple"
+        app:loaderExtraColor="@color/blue"
         app:loaderPrimeColor="@color/colorAccent"
-        app:loaderSize="tiny"
+        app:loaderSize="normal"
         android:layout_weight="1"
-        app:loaderRippleColor="@color/colorAccent"
-        app:loaderRippleMode="cycle"/>
+        app:loaderRippleColor="@color/gray"
+        app:loaderRippleMode="reverse"/>
 
 
 

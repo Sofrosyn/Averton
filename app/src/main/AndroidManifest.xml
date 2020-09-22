@@ -52,10 +52,7 @@
 
 
 
-        <activity
-            android:name="com.virmana.Iplayer.ui.activities.MovieActivity"
-            android:theme="@style/AppThemeNoAction"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
+
 
         <activity
             android:name="com.virmana.Iplayer.ui.activities.SplashActivity"

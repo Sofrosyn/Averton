@@ -8,12 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".ui.activities.IntroActivity">
-    <com.virmana.Iplayer.ui.views.ClickableViewPager
-        android:gravity="center"
-        android:id="@+id/view_pager_slide"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.virmana.Iplayer.ui.views.ClickableViewPager>
+
     <LinearLayout
         android:id="@+id/linear_layout_skip"
         android:background="?android:attr/selectableItemBackground"
@@ -56,7 +51,7 @@
                 app:itemSelectedTint="@color/white"
                 app:itemTint="@color/colorAccent"
                 app:showDividers="beginning"
-                app:delimiterSize = "6dp"
+                app:delimiterSize = "4dp"
                 app:itemSize="8dp"
 
                 />

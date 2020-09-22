@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.TypedValue;
+import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
+import androidx.loader.content.CursorLoader;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,7 +60,7 @@ public class HomeFragment extends Fragment {
 
 
 
-VideoHelper videoHelper;
+    VideoHelper videoHelper;
 
     private CarouselView carouselView;
 
@@ -67,6 +69,7 @@ VideoHelper videoHelper;
     private MovieAdapter movieAdapter;
     private  ArrayList<Music> arrayMusic;
     private  ArrayList<Video> arrayVideo;
+    private ArrayList<String> carouselArray;
 
 int [] ThrillerImages;
 
@@ -83,6 +86,7 @@ int [] ThrillerImages;
 
        initViews();
         initActions();
+      //  thrillerImages();
 
         return view;
     }
@@ -104,9 +108,10 @@ int [] ThrillerImages;
 
         ThrillerImages = new int[]{R.drawable.terminator,R.drawable.see,R.drawable.money_heist};
 
-        carouselView.setPageCount(ThrillerImages.length);
+     carouselView.setPageCount(ThrillerImages.length);
 
         carouselView.setImageListener((position, imageView) -> {
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             imageView.setImageResource(ThrillerImages[position]);
         });
 
@@ -151,7 +156,7 @@ int [] ThrillerImages;
 
     private void fetchMusic(){
         arrayMusic = new ArrayList<>();
-        int column_index_data, thumbnail;
+
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] projection = {MediaStore.Audio.AudioColumns.DATA,
                 MediaStore.Audio.AudioColumns.ALBUM,
@@ -162,12 +167,12 @@ int [] ThrillerImages;
         if (c != null) {
             while (c.moveToNext()) {
 
-                Music audioModel = new Music();
-                String path = c.getString(0);
-                String album = c.getString(1);
-                String artist = c.getString(2);
-//                String track =c.getString(3);
-                String viewedName;
+                 Music audioModel = new Music();
+                 String path = c.getString(0);
+                 String album = c.getString(1);
+                 String artist = c.getString(2);
+//               String track =c.getString(3);
+                 String viewedName;
                  String name = path.substring(path.lastIndexOf("/") + 1);
                  String truePath =  path.substring(0,path.lastIndexOf("/"));
 
@@ -253,7 +258,7 @@ int [] ThrillerImages;
         }
         movieAdapter = new MovieAdapter(getActivity(),arrayVideo);
         recycler_view_home_video.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        recycler_view_home_video.addItemDecoration(new HomeFragment.GridSpacingItemDecoration(4, dpToPx(10), true));
+       // recycler_view_home_video.addItemDecoration(new HomeFragment.GridSpacingItemDecoration(4, dpToPx(10), true));
         recycler_view_home_video.setItemAnimator(new DefaultItemAnimator());
 
 
@@ -423,6 +428,46 @@ int [] ThrillerImages;
                 Toasty.info(getActivity(),"Something went wrong",Toasty.LENGTH_SHORT).show();
             }
         }).onSameThread().check();
+    }//[end request permissions]
+
+    private void thrillerImages() {
+
+     carouselArray = new ArrayList<>();
+        String selection = MediaStore.Images.Media.DATA + " like ? ";
+        String[] selectionArgs =new String [] {"%"+"/storage/emulated/0/AVERTON/thumbnail/"+"%"};
+
+
+        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        String[] projection = {
+                MediaStore.Images.Media.DATA
+        };
+        Cursor c = getActivity().getContentResolver().query(uri, projection,selection, selectionArgs,   MediaStore.Files.FileColumns.DATE_ADDED + " ASC");
+
+        if (c != null) {
+            while (c.moveToNext()) {
+
+
+                String path = c.getString(0);
+
+
+               carouselArray.add(path);
+
+            }
+
+            c.close();
+
+
+        }
+
+        carouselView.setPageCount(carouselArray.size());
+
+        carouselView.setImageListener((position, imageView) -> {
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setImageURI(Uri.parse(carouselArray.get(position)));
+
+            Log.v("thriller Image",carouselArray.get(position));
+        });
+
     }
 
 
@@ -471,6 +516,6 @@ int [] ThrillerImages;
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
-}
+}// end of fragment
 
 
