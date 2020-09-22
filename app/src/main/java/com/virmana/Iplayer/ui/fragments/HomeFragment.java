@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.TypedValue;
@@ -33,6 +34,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.orhanobut.hawk.Hawk;
 import com.synnapps.carouselview.CarouselView;
 import com.virmana.Iplayer.R;
+import com.virmana.Iplayer.Utils.Paths;
 import com.virmana.Iplayer.Utils.VideoHelper;
 import com.virmana.Iplayer.entity.*;
 import com.virmana.Iplayer.ui.Adapters.MusicAdapter;
@@ -143,9 +145,11 @@ int [] ThrillerImages;
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             requestStoragePermission();
 
-        }else{fetchMusic(); fetchVideo();
-        fetchMusicByPath(recycler_view_home_music_hotVibes,"/storage/emulated/0/AVERTON/Music/Alessia_Cara");
-         fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,"/storage/emulated/0/Averton/Movies/DOW S1/");
+        }else{
+            fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated);
+            fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending);
+            fetchVideoByPath(recycler_view_home_video,Paths.moviesTrending);
+            fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);
         }
 
 
@@ -198,7 +202,7 @@ int [] ThrillerImages;
         }
 
         final int columns = getResources().getInteger(R.integer.grid_column);
-        musicAdapter = new MusicAdapter(getActivity(),arrayMusic,R.drawable.music_bilie);
+//        musicAdapter = new MusicAdapter(getActivity(),arrayMusic,R.drawable.music_bilie);
 
         recycler_view_home_music.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         recycler_view_home_music.setItemAnimator(new DefaultItemAnimator());
@@ -275,7 +279,7 @@ int [] ThrillerImages;
     private void fetchVideoByPath(RecyclerView recyclerView, String videoFolder){
 
         String selection = MediaStore.Video.Media.DATA + " like ? ";
-        String[] selectionArgs =new String [] {"%"+videoFolder+"%"};
+        String[] selectionArgs =new String [] {"%"+ videoFolder +"%"};
 
         arrayVideo = new ArrayList<>();
         int column_index_data, thumnail;
@@ -301,8 +305,9 @@ int [] ThrillerImages;
 
                 String vDuration = VideoHelper.timeConverter(Integer.parseInt(videoDuration));
                 String name = path.substring(path.lastIndexOf("/") + 1);
+                String videoName = name.substring(0,name.lastIndexOf("."));
 
-                videoModel.setVideoName(name);
+                videoModel.setVideoName(videoName);
                 videoModel.setVideoPath(path);
                 videoModel.setVideoDuration(vDuration);
                 videoModel.setVideoGenre(videoSize);
@@ -357,13 +362,14 @@ int [] ThrillerImages;
                 String artist = c.getString(2);
 //                String track =c.getString(3);
 
-                String name = path.substring(path.lastIndexOf("/") + 1);
-                String albumArt =  path.substring(0,path.lastIndexOf("/"));
+                String ext = path.substring(path.lastIndexOf("/") + 1);
+                String songName = ext.substring(0,ext.lastIndexOf("."));
+              //  String albumArt =  path.substring(0,path.lastIndexOf("/"));
 
-                audioModel.setArtistName("artist name");
-                audioModel.setArtistSong("song");
+                audioModel.setArtistName(artist);
+                audioModel.setArtistSong(songName);
                 audioModel.setArtistPath(path);
-                audioModel.setArtistThumbnail(albumArt);
+
 //                audioModel.setArtistSong(album);
                 //  audioModel.setArtistPath(path);
                 arrayMusic.add(audioModel);
@@ -371,7 +377,7 @@ int [] ThrillerImages;
                 Log.v(" Album :%s", album);
                 Log.v(" Artist :%s", artist);
                 Log.v(" path :%s", path);
-                Log.v(" truePath :%s", albumArt);
+//                Log.v(" truePath :%s", albumArt);
                 //             Log.v(" Track :%s", track);
 
 
@@ -381,7 +387,7 @@ int [] ThrillerImages;
         }
 
         final int columns = getResources().getInteger(R.integer.grid_column);
-        musicAdapter = new MusicAdapter(getActivity(),arrayMusic,R.drawable.music_cara);
+        musicAdapter = new MusicAdapter(getActivity(),arrayMusic);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -405,10 +411,17 @@ int [] ThrillerImages;
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()){
-                    fetchMusic();
-                    fetchVideo();
-                    fetchMusicByPath(recycler_view_home_music_hotVibes,"/storage/emulated/0/AVERTON/Music/Alessia_Cara");
-                    fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,"/storage/emulated/0/Averton/Movies/DOW S1");
+
+                    fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated);
+                    fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending);
+
+                    fetchVideoByPath(recycler_view_home_video,Paths.moviesTrending);
+                    fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);
+/*
+
+                    fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);
+                    fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);
+*/
 
                 }
                 if(report.isAnyPermissionPermanentlyDenied()){

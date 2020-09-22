@@ -16,6 +16,7 @@ import android.widget.*;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.karumi.dexter.Dexter;
@@ -25,6 +26,7 @@ import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.virmana.Iplayer.Utils.Paths;
 import com.virmana.Iplayer.Utils.VideoHelper;
 import com.virmana.Iplayer.entity.Music;
 import com.virmana.Iplayer.ui.Adapters.MusicAdapter;
@@ -51,24 +53,22 @@ public class MusicFragment extends Fragment {
 
     private View view;
 
-    private RecyclerView recycler_view_music_fragment;
+    private RecyclerView recycler_view_music_afroBeats;
+    private RecyclerView recycler_view_music_Trending;
+    private RecyclerView recycler_view_music_topRated;
+    private RecyclerView recycler_view_music_RnB;
+    private RecyclerView recycler_view_music_billboards;
+    private RecyclerView recycler_view_music_hipHop;
+    private RecyclerView recycler_view_music_soul;
 
-    private SwipeRefreshLayout swipe_refresh_layout_series_fragment;
 
-
-    private GridLayoutManager gridLayoutManager;
 
     public ArrayList<Music> arrayMusic;
     private MusicAdapter musicAdapter;
 
-    private int pastVisiblesItems, visibleItemCount, totalItemCount;
-    private boolean loading = true;
-    private boolean firstLoadOrder = true;
-    private boolean loaded = false;
-    private VideoHelper videoHelper;
-    private int screenOrientation;
 
-    private PrefManager prefManager;
+    private VideoHelper videoHelper;
+
     RecyclerView.LayoutManager mLayoutManager;
 
     public MusicFragment() {
@@ -81,7 +81,7 @@ public class MusicFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_music, container, false);
 
-        prefManager = new PrefManager(getActivity());
+
         initView();
         initActon();
 
@@ -91,17 +91,7 @@ public class MusicFragment extends Fragment {
     private void initActon() {
 
 
-        recycler_view_music_fragment.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0) //check for scroll down
-                {
 
-                } else {
-
-                }
-            }
-        });
     }
 
 
@@ -111,22 +101,35 @@ public class MusicFragment extends Fragment {
         videoHelper = new VideoHelper();
 
 
-        this.recycler_view_music_fragment = view.findViewById(R.id.recycler_view_series_fragment);
+        this.recycler_view_music_afroBeats = view.findViewById(R.id.recycler_view_music_afroBeats);
+        this.recycler_view_music_Trending = view.findViewById(R.id.recycler_view_music_trending);
+        this.recycler_view_music_topRated = view.findViewById(R.id.recycler_view_music_topRated);
+        this.recycler_view_music_RnB = view.findViewById(R.id.recycler_view_music_RnB);
+        this.recycler_view_music_billboards = view.findViewById(R.id.recycler_view_music_billboards);
+        this.recycler_view_music_hipHop = view.findViewById(R.id.recycler_view_music_hipHop);
+        this.recycler_view_music_soul = view.findViewById(R.id.recycler_view_music_soul);
 
 
 
-        if (screenOrientation== Configuration.ORIENTATION_PORTRAIT) {
-             mLayoutManager = new GridLayoutManager(getActivity(), 2);
-        } else {
-             mLayoutManager = new GridLayoutManager(getActivity(), 4);
 
-        }
+
+
 
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
         requestStoragePermission();
 
-        }else{fetchMusic();}
+        }else{
+
+            fetchMusicByPath(recycler_view_music_afroBeats, Paths.musicAfrobeats);
+            fetchMusicByPath(recycler_view_music_billboards, Paths.musicBillBoard);
+            fetchMusicByPath(recycler_view_music_hipHop, Paths.musichipHop);
+            fetchMusicByPath(recycler_view_music_RnB, Paths.musicRnB);
+            fetchMusicByPath(recycler_view_music_soul, Paths.musicSouls);
+            fetchMusicByPath(recycler_view_music_Trending, Paths.musicTrending);
+            fetchMusicByPath(recycler_view_music_topRated, Paths.musicAfricaTopRated);
+
+        }
 
 
 
@@ -134,7 +137,7 @@ public class MusicFragment extends Fragment {
 
 
     }
-
+/*
     private void fetchMusic(){
         arrayMusic = new ArrayList<>();
         int column_index_data, thumbnail;
@@ -192,6 +195,68 @@ public class MusicFragment extends Fragment {
         // recycler_view_series_fragment.setLayoutManager(gridLayoutManager);     }
 
     }
+    */
+
+
+    private void fetchMusicByPath(RecyclerView recyclerView, String folderPath){
+
+        String selection = MediaStore.Audio.AudioColumns.DATA + " like ? ";
+        String[] selectionArgs =new String [] {"%"+folderPath+"%"};
+        arrayMusic = new ArrayList<>();
+        int column_index_data, thumbnail;
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        String[] projection = {MediaStore.Audio.AudioColumns.DATA,
+                MediaStore.Audio.AudioColumns.ALBUM,
+                MediaStore.Audio.ArtistColumns.ARTIST
+        };
+        Cursor c = getActivity().getContentResolver().query(uri, projection,selection, selectionArgs, null);
+
+        if (c != null) {
+            while (c.moveToNext()) {
+
+                Music audioModel = new Music();
+                String path = c.getString(0);
+                String album = c.getString(1);
+                String artist = c.getString(2);
+//                String track =c.getString(3);
+
+                String ext = path.substring(path.lastIndexOf("/") + 1);
+                String songName = ext.substring(0,ext.lastIndexOf("."));
+                //  String albumArt =  path.substring(0,path.lastIndexOf("/"));
+
+                audioModel.setArtistName(artist);
+                audioModel.setArtistSong(songName);
+                audioModel.setArtistPath(path);
+
+//                audioModel.setArtistSong(album);
+                //  audioModel.setArtistPath(path);
+                arrayMusic.add(audioModel);
+
+                Log.v(" Album :%s", album);
+                Log.v(" Artist :%s", artist);
+                Log.v(" path :%s", path);
+
+            }
+
+            c.close();
+        }
+
+        final int columns = getResources().getInteger(R.integer.grid_column);
+        musicAdapter = new MusicAdapter(getActivity(),arrayMusic);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(musicAdapter);
+
+
+        Log.v("Adapter","adapter showing");
+        // recycler_view_series_fragment.setLayoutManager(gridLayoutManager);     }
+
+    }
+
+
+
     private void requestStoragePermission( ){
         Dexter.withActivity(getActivity()).withPermissions(
                 Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -199,8 +264,13 @@ public class MusicFragment extends Fragment {
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport report) {
             if (report.areAllPermissionsGranted()){
-                fetchMusic();
-
+                fetchMusicByPath(recycler_view_music_afroBeats, Paths.musicAfrobeats);
+                fetchMusicByPath(recycler_view_music_billboards, Paths.musicBillBoard);
+                fetchMusicByPath(recycler_view_music_hipHop, Paths.musichipHop);
+                fetchMusicByPath(recycler_view_music_RnB, Paths.musicRnB);
+                fetchMusicByPath(recycler_view_music_soul, Paths.musicSouls);
+                fetchMusicByPath(recycler_view_music_Trending, Paths.musicTrending);
+                fetchMusicByPath(recycler_view_music_topRated, Paths.musicAfricaTopRated);
 
             }
             if(report.isAnyPermissionPermanentlyDenied()){

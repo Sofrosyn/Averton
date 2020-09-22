@@ -51,19 +51,14 @@ public class MoviesFragment extends Fragment {
 
     private RecyclerView recycler_view_movies_trending;
     private RecyclerView recycler_view_movies_pickOfTheWeek;
-    private RecyclerView recycler_view_movies_africa;
+    private RecyclerView recycler_view_movies_documentary;
     private RecyclerView recycler_view_movies_hollywood;
     private RecyclerView recycler_view_movies_bollywood;
     private RecyclerView recycler_view_movies_nollywood;
 
     private ImageButton playButton;
 
-    private final String TRENDING = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String PICKOFTHEWEEK = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String AFRICA = "/storage/emulated/0/Averton/Movies/Money Heist/";
-    private final String HOLLYWOOD = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String BOLLYWOOD = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String NOLLYWOOD = "/storage/emulated/0/Averton/Movies/Money Heist/";
+
 
     private  ArrayList<Video> arrayVideo;
     private MovieAdapter movieAdapter;
@@ -72,7 +67,7 @@ public class MoviesFragment extends Fragment {
     private VideoView thriller_video;
     private int number;
 
-    final String THRILLERVIDEO = Paths.thrillerVideo;
+
 
 
 
@@ -105,7 +100,7 @@ public class MoviesFragment extends Fragment {
 
         this.recycler_view_movies_trending = view.findViewById(R.id.recycler_view_movies_trending);
         this.recycler_view_movies_pickOfTheWeek = view.findViewById(R.id.recycler_view_movies_pickOfTheWeek);
-        this.recycler_view_movies_africa = view.findViewById(R.id.recycler_view_movies_africa);
+        this.recycler_view_movies_documentary = view.findViewById(R.id.recycler_view_movies_documentary);
         this.recycler_view_movies_hollywood = view.findViewById(R.id.recycler_view_movies_hollywood);
         this.recycler_view_movies_bollywood = view.findViewById(R.id.recycler_view_movies_bollywood);
         this.recycler_view_movies_nollywood = view.findViewById(R.id.recycler_view_movies_nollywood);
@@ -119,12 +114,12 @@ public class MoviesFragment extends Fragment {
 
         }else{
 
-            fetchVideoByPath(recycler_view_movies_trending,TRENDING);
-            fetchVideoByPath(recycler_view_movies_pickOfTheWeek,PICKOFTHEWEEK);
-            fetchVideoByPath(recycler_view_movies_africa,AFRICA);
-            fetchVideoByPath(recycler_view_movies_bollywood,BOLLYWOOD);
-            fetchVideoByPath(recycler_view_movies_nollywood,NOLLYWOOD);
-            fetchVideoByPath(recycler_view_movies_hollywood,HOLLYWOOD);
+            fetchVideoByPath(recycler_view_movies_trending,Paths.moviesTrending);
+            fetchVideoByPath(recycler_view_movies_pickOfTheWeek,Paths.moviesPickOfTheWeek);
+            fetchVideoByPath(recycler_view_movies_documentary,Paths.moviesDocumentary);
+            fetchVideoByPath(recycler_view_movies_bollywood,Paths.moviesBollywoodHome);
+            fetchVideoByPath(recycler_view_movies_nollywood,Paths.moviesHollywoodHome);
+            fetchVideoByPath(recycler_view_movies_hollywood,Paths.moviesNollywoodHome);
         }
 
         Log.v("Adapter","adapter showing");
@@ -253,13 +248,12 @@ public class MoviesFragment extends Fragment {
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()){
-
-                    fetchVideoByPath(recycler_view_movies_trending,TRENDING);
-                    fetchVideoByPath(recycler_view_movies_pickOfTheWeek,PICKOFTHEWEEK);
-                    fetchVideoByPath(recycler_view_movies_africa,AFRICA);
-                    fetchVideoByPath(recycler_view_movies_bollywood,BOLLYWOOD);
-                    fetchVideoByPath(recycler_view_movies_nollywood,NOLLYWOOD);
-                    fetchVideoByPath(recycler_view_movies_hollywood,HOLLYWOOD);
+                    fetchVideoByPath(recycler_view_movies_trending,Paths.moviesTrending);
+                    fetchVideoByPath(recycler_view_movies_pickOfTheWeek,Paths.moviesPickOfTheWeek);
+                    fetchVideoByPath(recycler_view_movies_documentary,Paths.moviesDocumentary);
+                    fetchVideoByPath(recycler_view_movies_bollywood,Paths.moviesBollywoodHome);
+                    fetchVideoByPath(recycler_view_movies_nollywood,Paths.moviesHollywoodHome);
+                    fetchVideoByPath(recycler_view_movies_hollywood,Paths.moviesNollywoodHome);
 
 
                 }
@@ -285,7 +279,7 @@ public class MoviesFragment extends Fragment {
         super.onStart();
         stopPlayer();
 
-    playThriller();
+    //playThriller();
 
         }
 
@@ -311,7 +305,7 @@ stopPlayer();
 
 
     public void playThriller(){
-        thriller_video.setVideoPath(THRILLERVIDEO);
+//        thriller_video.setVideoPath(THRILLERVIDEO);
 
         thriller_video.setOnPreparedListener(mp -> {
 

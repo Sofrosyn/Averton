@@ -47,12 +47,12 @@
                 android:orientation="vertical">
 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                  android:text="Trending" android:textStyle="bold" android:textSize="18dp" />
+                  android:text="Trending" android:textStyle="bold" android:textSize="24dp" />
 
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
                           android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-               android:textColor="@color/white"  android:layout_margin="2dp"/>
+               android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
             </LinearLayout>
 </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
@@ -73,12 +73,12 @@
                     android:orientation="vertical">
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                              android:text="Pick of the Week" android:textStyle="bold" android:textSize="18dp" />
+                              android:text="Pick of the Week" android:textStyle="bold" android:textSize="24dp" />
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
-                                  android:textColor="@color/white"  android:layout_margin="2dp"/>
+                                  android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                     </LinearLayout>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
@@ -102,12 +102,12 @@
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                           >
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                  android:text="BillBoard 100" android:textStyle="bold" android:textSize="18dp"  />
+                  android:text="BillBoard 100" android:textStyle="bold" android:textSize="24dp"  />
 
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
                               android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp" android:textAlignment="center"
-                              android:textColor="@color/white"  android:layout_margin="2dp"/>
+                              android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                 </LinearLayout>
             </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
@@ -131,12 +131,12 @@
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                               >
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                              android:text="Hottest Vibes" android:textStyle="bold" android:textSize="18dp"  />
+                              android:text="Hottest Vibes" android:textStyle="bold" android:textSize="24dp"  />
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp" android:textAlignment="center"
-                                  android:textColor="@color/white"  android:layout_margin="2dp"/>
+                                  android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                     </LinearLayout>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
@@ -158,12 +158,12 @@
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                           android:layout_marginTop="4dp">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                  android:text="Local" android:textStyle="bold" android:textSize="18dp"  />
+                  android:text="Local" android:textStyle="bold" android:textSize="24dp"  />
 
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
                               android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp" android:textAlignment="center"
-                              android:textColor="@color/white"  android:layout_margin="2dp"/>
+                              android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -186,12 +186,12 @@
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                               android:layout_marginTop="4dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                              android:text="International" android:textStyle="bold" android:textSize="18dp"  />
+                              android:text="International" android:textStyle="bold" android:textSize="24dp"  />
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp" android:textAlignment="center"
-                                  android:textColor="@color/white"  android:layout_margin="2dp"/>
+                                  android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                     </LinearLayout>
 
                 </LinearLayout>

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder> {
 
         private Context mContext;
-        private int bitmap;
+
         public ArrayList<Music> albumList;
 
         private MetadataExtractor extractor;
@@ -42,10 +42,10 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
         }
 
 
-        public MusicAdapter(Context mContext, ArrayList<Music> albumList, int bitmap) {
+        public MusicAdapter(Context mContext, ArrayList<Music> albumList) {
             this.mContext = mContext;
             this.albumList = albumList;
-            this.bitmap = bitmap;
+
         }
 
         @Override

@@ -2,6 +2,10 @@ package com.virmana.Iplayer.ui.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.virmana.Iplayer.R;
+import com.virmana.Iplayer.Utils.MetadataExtractor;
+import com.virmana.Iplayer.Utils.Paths;
 import com.virmana.Iplayer.entity.Video;
 import com.virmana.Iplayer.ui.activities.MoviePlayerActivity;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder> {
@@ -36,11 +44,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
         Video video = videoList.get(position);
      //   holder.videoTitle.setText(video.getVideoName());
         holder.videoGenre.setText(video.getVideoDuration());
+    MetadataExtractor extractor = new MetadataExtractor();
+        String imageName = video.getVideoName()+".jpg";
+        String imagePath = Paths.imagesMovieThumbnail+"/"+imageName;
+        final Bitmap b = BitmapFactory.decodeFile(imagePath);
 
-        RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.album_placeholder)
-                .error(R.drawable.album_placeholder).fitCenter();
+        RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.video_art)
+                .error(R.drawable.video_art).fitCenter();
 
-        Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(R.drawable.video_art).thumbnail(0.5f).into(holder.thumbnail);
+    Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(extractor.getCoverArt(video.getVideoPath())).thumbnail(0.5f).into(holder.thumbnail);
+
+
+
         holder.thumbnail.setOnClickListener(v -> {
             //Toasty.info(mContext,"clicked",Toasty.LENGTH_SHORT).show();
 
