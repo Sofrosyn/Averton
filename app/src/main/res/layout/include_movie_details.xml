@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+                          android:id="@+id/linear_top">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_horizontal">
+                    <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:text="Play"
+                                                                       android:layout_height="wrap_content" android:drawableLeft="@drawable/ic_play"/>
+                </LinearLayout>
+
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginLeft="16dp" android:layout_marginRight="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="14dp" android:textColor="@color/white"
+                              android:text="Description" android:id="@+id/movie_description_text"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+                          android:layout_below="@id/linear_top"  android:layout_marginTop="16dp"
+                          android:weightSum="4">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Comedy" android:textStyle="bold" android:textSize="24dp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view_movies_desc_comedy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Action" android:textStyle="bold" android:textSize="24dp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view_movies_desc_action"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Tragedy" android:textStyle="bold" android:textSize="24dp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view_movies_desc_Tragedy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                                  android:text="Romance" android:textStyle="bold" android:textSize="24dp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_view_movies_desc_romance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

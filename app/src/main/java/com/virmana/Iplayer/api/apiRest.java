@@ -127,7 +127,7 @@ public interface apiRest {
 
 
     @GET("genre/all/" + Global.SECURE_KEY + "/" + Global.ITEM_PURCHASE_CODE + "/")
-    Call<List<Genre>> getGenreList();
+    Call<List<Tag>> getGenreList();
 
     @GET("serie/by/filtres/{genre}/{order}/{page}/" + Global.SECURE_KEY + "/" + Global.ITEM_PURCHASE_CODE + "/")
     Call<List<Poster>> getSeriesByFiltres(@Path("genre") Integer genre,@Path("order") String order,@Path("page") Integer page);

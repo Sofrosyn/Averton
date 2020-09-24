@@ -18,8 +18,13 @@ import com.bumptech.glide.request.RequestOptions;
 import com.virmana.Iplayer.R;
 import com.virmana.Iplayer.Utils.MetadataExtractor;
 import com.virmana.Iplayer.Utils.Paths;
+import com.virmana.Iplayer.Utils.VideoHelper;
+import com.virmana.Iplayer.entity.Analytics;
 import com.virmana.Iplayer.entity.Video;
+import com.virmana.Iplayer.ui.activities.ExoPlayerActivity;
 import com.virmana.Iplayer.ui.activities.MoviePlayerActivity;
+import io.paperdb.Paper;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,9 +34,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
 
     private Context mContext;
     private ArrayList<Video> videoList;
+    private int noClicks=0;
 
     private final int maxItems = 10;
 
+    @NotNull
     @Override
     public MovieAdapter.myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -42,7 +49,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.myViewHolder holder, int position) {
         Video video = videoList.get(position);
-     //   holder.videoTitle.setText(video.getVideoName());
+
         holder.videoGenre.setText(video.getVideoDuration());
     MetadataExtractor extractor = new MetadataExtractor();
         String imageName = video.getVideoName()+".jpg";
@@ -56,13 +63,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
 
 
 
+
         holder.thumbnail.setOnClickListener(v -> {
             //Toasty.info(mContext,"clicked",Toasty.LENGTH_SHORT).show();
 
+
+
+            noClicks++;
+
+
+
+
             Intent intent = new Intent(mContext, MoviePlayerActivity.class );
             intent.putExtra("videoPath",video.getVideoPath());
+            intent.putExtra("videoName",video.getVideoName());
             intent.putExtra("Activity",2);
+            intent.putExtra("noClicks",noClicks);
+
             mContext.startActivity(intent);});
+
+
 
     }
 

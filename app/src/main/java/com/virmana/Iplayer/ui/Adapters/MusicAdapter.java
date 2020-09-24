@@ -26,6 +26,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
         public ArrayList<Music> albumList;
 
         private MetadataExtractor extractor;
+        private String tag;
 
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -37,14 +38,15 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
                 title = view.findViewById(R.id.title);
                 artist = view.findViewById(R.id.artist);
                 thumbnail = view.findViewById(R.id.musicThumbnail);
-//                overflow = (ImageView) view.findViewById(R.id.overflow);
+
             }
         }
 
 
-        public MusicAdapter(Context mContext, ArrayList<Music> albumList) {
+        public MusicAdapter(Context mContext, ArrayList<Music> albumList,String tag) {
             this.mContext = mContext;
             this.albumList = albumList;
+            this.tag =tag;
 
         }
 
@@ -64,14 +66,14 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
 
             holder.title.setText(album.getArtistSong());
             holder.artist.setText(album.getArtistName());
-//            File thumbnail = new File(Environment.getExternalStorageDirectory()+album.getArtistThumbnail()+"/Albumart.jpg");
-            RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.album_placeholder)
+
+            RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.album_placeholder).dontAnimate().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                                                 .error(R.drawable.album_placeholder).fitCenter();
 
 
 
 
-            Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(extractor.getCoverArt(album.getArtistPath())).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.thumbnail);
+            Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(extractor.getCoverArt(album.getArtistPath())).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(holder.thumbnail);
 
             holder.thumbnail.setOnClickListener(v -> {
 
@@ -79,58 +81,15 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
                     Intent intent = new Intent(mContext, MusicPlayerActivity.class );
 
                     intent.putExtra("musicPath",album.getArtistPath());
-
+                    intent.putExtra("tag",tag);
                     intent.putExtra("Activity",1);
                     mContext.startActivity(intent);
 
             });
 
-            // loading album cover using picasso library
-         //   Picasso.with(mContext).load(album.getArtistThumbnail()).into(holder.thumbnail);
-/*
-            holder.overflow.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    showPopupMenu(holder.overflow);
-                }
-            });*/
+
         }
 
-        /**
-         * Showing popup menu when tapping on 3 dots
-         */
-      /*
-        private void showPopupMenu(View view) {
-            // inflate menu
-            PopupMenu popup = new PopupMenu(mContext, view);
-            MenuInflater inflater = popup.getMenuInflater();
-            inflater.inflate(R.menu.menu_album, popup.getMenu());
-            popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
-            popup.show();
-        }
-
-   */     /**
-         * Click listener for popup menu items
-         */
-       /* class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
-
-            public MyMenuItemClickListener() {
-            }
-
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.action_add_favourite:
-                        Toast.makeText(mContext, "Add to favourite", Toast.LENGTH_SHORT).show();
-                        return true;
-                    case R.id.action_play_next:
-                        Toast.makeText(mContext, "Play next", Toast.LENGTH_SHORT).show();
-                        return true;
-                    default:
-                }
-                return false;
-            }
-        }*/
 
 
 

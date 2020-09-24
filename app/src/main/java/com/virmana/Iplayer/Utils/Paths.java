@@ -76,7 +76,7 @@ public class Paths {
    public static String sportsLaliga = "/extSdCard/AVERTON/Sports/Laliga";
    public static String sportsleague1 = "/extSdCard/AVERTON/Sports/league1";
    public static String sportsSeriaA = "/extSdCard/AVERTON/Sports/SeriaA";
-   public static String hightLights = "/extSdCard/AVERTON/Sports/Highlights";
+   public static String sportsHightLights = "/extSdCard/AVERTON/Sports/Highlights";
 
 
 /*Music folders*/
@@ -92,6 +92,9 @@ public static String musicSouls ="extSdCard/AVERTON/Music/Souls";
 public static String musicRnB ="extSdCard/AVERTON/Music/Souls";
 public static String musicTrending ="extSdCard/AVERTON/Music/Trending";
 public static String musichipHop ="extSdCard/AVERTON/Music/Hiphop";
+
+
+public static String thriller= "extSdCard/AVERTON/Thriller/";
 
 
 

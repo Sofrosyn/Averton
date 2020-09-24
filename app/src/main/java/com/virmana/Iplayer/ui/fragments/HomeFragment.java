@@ -146,8 +146,8 @@ int [] ThrillerImages;
             requestStoragePermission();
 
         }else{
-            fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated);
-            fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending);
+            fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated,"hometoprated");
+            fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending,"hometrending");
             fetchVideoByPath(recycler_view_home_video,Paths.moviesTrending);
             fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);
         }
@@ -328,7 +328,7 @@ int [] ThrillerImages;
         }
         movieAdapter = new MovieAdapter(getActivity(),arrayVideo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        recyclerView.addItemDecoration(new HomeFragment.GridSpacingItemDecoration(4, dpToPx(10), true));
+
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
@@ -340,7 +340,7 @@ int [] ThrillerImages;
 
     }
 
-    private void fetchMusicByPath(RecyclerView recyclerView, String folderPath){
+    private void fetchMusicByPath(RecyclerView recyclerView, String folderPath,String tag){
 
         String selection = MediaStore.Audio.AudioColumns.DATA + " like ? ";
         String[] selectionArgs =new String [] {"%"+folderPath+"%"};
@@ -387,7 +387,7 @@ int [] ThrillerImages;
         }
 
         final int columns = getResources().getInteger(R.integer.grid_column);
-        musicAdapter = new MusicAdapter(getActivity(),arrayMusic);
+        musicAdapter = new MusicAdapter(getActivity(),arrayMusic,tag);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -412,8 +412,8 @@ int [] ThrillerImages;
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()){
 
-                    fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated);
-                    fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending);
+                    fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated,"hometoprated");
+                    fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending,"hometrending");
 
                     fetchVideoByPath(recycler_view_home_video,Paths.moviesTrending);
                     fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);

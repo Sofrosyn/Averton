@@ -2,42 +2,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
                 tools:context="com.virmana.Iplayer.ui.activities.MusicPlayerActivity">
 
-    <ImageView android:layout_centerInParent="true" android:layout_height="200dp" android:layout_width="200dp"
-    android:src="@drawable/album_placeholder"/>
+    <ImageView android:layout_centerInParent="true" android:layout_height="match_parent" android:layout_width="match_parent"
+    android:src="@drawable/album_placeholder" android:id="@+id/musi_player_thumbnail" />
 
 
-    <SeekBar  style="?android:attr/progressBarStyleHorizontal"
-              android:layout_width="0dip"
-              android:layout_height="32dip"/>
+        <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/music_activity_playlist"
+                                                   android:layout_alignParentRight="true" android:layout_below="@id/music_activity_toolBar"/>
+
+
+
+
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#CC000000"
+            android:background="@color/transparent"
             android:orientation="vertical"
             android:id="@+id/media_controller"
-            android:layout_alignParentBottom="true"
-    >
+            android:layout_alignParentBottom="true">
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@color/transparent">
+            <com.facebook.shimmer.ShimmerFrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" app:shimmer_repeat_mode="reverse" android:id="@+id/music_activity_shimmer"
+                                                     app:shimmer_direction="left_to_right"  app:shimmer_duration="20000"  android:layout_centerInParent="true"
+                                                     app:shimmer_shape="linear"  android:visibility="visible" app:shimmer_colored="true" app:shimmer_base_color="@color/white">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold"
+                    android:text="AVERTON" android:fontFamily="@font/averton" android:textColor="@color/dark_gray" android:textSize="24dp"/>
+
+                </LinearLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            <ImageButton android:id="@+id/btnShuffle" android:src="@drawable/shuffle"
+                         style="@android:style/MediaButton" />
+
+
+            <ImageButton style="@android:style/MediaButton" android:src="@drawable/repeat" android:layout_gravity="right"
+                         android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+
+
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="4dip"
-                android:orientation="horizontal">
-
-            <ImageButton android:id="@+id/btnPlay"
-                         style="@android:style/MediaButton.Play"
-            />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
                 android:orientation="horizontal">
 
             <TextView android:id="@+id/time_current"
@@ -49,7 +67,7 @@
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:paddingRight="4dip"
-                      android:textColor="#ffffff"
+                      android:textColor="#F3F1F1"
                       android:text="00:00" />
 
             <SeekBar
@@ -71,20 +89,38 @@
                       android:textColor="#ffffff"
                       android:text="99:99" />
 
-            <ImageButton android:id="@+id/fullscreen"
-                         android:layout_marginTop="-7dp"
-                         android:paddingTop="4dip"
-                         android:paddingBottom="4dip"
-                         android:paddingLeft="10dip"
-                         android:paddingRight="4dip"
-                         android:layout_gravity="top"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:background="@android:color/transparent"
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="4dip"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal">
+
+            <ImageButton android:id="@+id/btnPrevious"
+                         style="@android:style/MediaButton.Previous"
+            /><ImageButton android:id="@+id/btnPlay"
+                         style="@android:style/MediaButton.Play"
+            /><ImageButton android:id="@+id/btnNext"
+                         style="@android:style/MediaButton.Next"
             />
 
         </LinearLayout>
 
+
+
     </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+                                        android:id="@+id/music_activity_toolBar"
+                                       android:elevation="4dp"
+
+
+
+    />
 
 </RelativeLayout>

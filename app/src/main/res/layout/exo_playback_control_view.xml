@@ -49,12 +49,7 @@
             app:srcCompat="@drawable/ic_subtitles"
             android:layout_width="40dp"
             android:layout_height="40dp" />
-        <androidx.mediarouter.app.MediaRouteButton
-            android:id="@+id/media_route_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-        />
+
     </LinearLayout>
     <TextView
 

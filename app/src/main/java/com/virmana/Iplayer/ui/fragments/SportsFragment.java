@@ -2,15 +2,12 @@ package com.virmana.Iplayer.ui.fragments;
 
 
 import android.Manifest;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +22,8 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.virmana.Iplayer.R;
+import com.virmana.Iplayer.Utils.Paths;
 import com.virmana.Iplayer.Utils.VideoHelper;
-import com.virmana.Iplayer.entity.Genre;
 import com.virmana.Iplayer.entity.Video;
 import com.virmana.Iplayer.ui.Adapters.MovieAdapter;
 
@@ -34,40 +31,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class SportsFragment extends Fragment {
 
 
+    final String THRILLERVIDEO = "file://"+"/mnt/extSdCard/AVERTON/Thriller/sport.mp4";
     private View view;
-
-    private List<Genre> genreList =  new ArrayList<>();
-
     private RecyclerView recycler_view_sport_trending;
     private RecyclerView recycler_view_sport_pickOfTheWeek;
     private RecyclerView recycler_view_sport_africa;
     private RecyclerView recycler_view_sport_hollywood;
     private RecyclerView recycler_view_sport_bollywood;
     private RecyclerView recycler_view_sport_nollywood;
-
-
-
-    private final String TRENDING = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String PICKOFTHEWEEK = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String AFRICA = "/storage/emulated/0/Averton/Movies/Money Heist/";
-    private final String HOLLYWOOD = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String BOLLYWOOD = "/storage/emulated/0/Averton/Movies/DOW S1/";
-    private final String NOLLYWOOD = "/storage/emulated/0/Averton/Movies/Money Heist/";
-
     private  ArrayList<Video> arrayVideo;
     private MovieAdapter movieAdapter;
-
     private VideoHelper videoHelper;
     private VideoView thriller_video;
-    private int number;
-
-    final String THRILLERVIDEO = "file://"+"/storage/emulated/0/AVERTON/Movies/Trailer.mp4";
 
 
 
@@ -121,13 +100,13 @@ public class SportsFragment extends Fragment {
         }else{
 
 
-           fetchVideoByPath(recycler_view_sport_trending,TRENDING);
+           fetchVideoByPath(recycler_view_sport_trending, Paths.sportsBundesliga);
+            fetchVideoByPath(recycler_view_sport_pickOfTheWeek,Paths.sportsEpl);
+            fetchVideoByPath(recycler_view_sport_africa,Paths.sportsSeriaA);
 
-            fetchVideoByPath(recycler_view_sport_pickOfTheWeek,PICKOFTHEWEEK);
-            fetchVideoByPath(recycler_view_sport_africa,AFRICA);
-            fetchVideoByPath(recycler_view_sport_bollywood,BOLLYWOOD);
-            fetchVideoByPath(recycler_view_sport_nollywood,NOLLYWOOD);
-            fetchVideoByPath(recycler_view_sport_hollywood,HOLLYWOOD);
+            fetchVideoByPath(recycler_view_sport_bollywood,Paths.sportsLaliga);
+            fetchVideoByPath(recycler_view_sport_nollywood,Paths.sportsleague1);
+            fetchVideoByPath(recycler_view_sport_hollywood,Paths.sportsHightLights);
 
 
         }
@@ -143,7 +122,7 @@ public class SportsFragment extends Fragment {
         String[] selectionArgs =new String [] {"%"+videoFolder+"%"};
 
         arrayVideo = new ArrayList<>();
-        int column_index_data, thumnail;
+
         Uri uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
         String[] projection = {MediaStore.Video.Media._ID,
                 MediaStore.Video.Media.DURATION,
@@ -162,7 +141,7 @@ public class SportsFragment extends Fragment {
                 String path = c.getString(6);
                 String videoDuration = c.getString(1);
                 String videoSize = c.getString(2);
-                String videoTitle = c.getString(5);
+
 
                 String vDuration = VideoHelper.timeConverter(Integer.parseInt(videoDuration));
                 String name = path.substring(path.lastIndexOf("/") + 1);
@@ -171,13 +150,11 @@ public class SportsFragment extends Fragment {
                 videoModel.setVideoPath(path);
                 videoModel.setVideoDuration(vDuration);
                 videoModel.setVideoGenre(videoSize);
-//                audioModel.setArtistSong(album);
-                //  audioModel.setArtistPath(path);
 
 
                 arrayVideo.add(videoModel);
                 Log.v(" videoDuration :%s", videoDuration);
-//                Log.v(" videoTitle :%s", videoTitle);
+
                 Log.v(" Video path :%s", path);
                 Log.v(" Name :%s", name);
 
@@ -203,48 +180,8 @@ public class SportsFragment extends Fragment {
 
 
 
-    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
-        private int spanCount;
-        private int spacing;
-        private boolean includeEdge;
 
-        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
-            this.spanCount = spanCount;
-            this.spacing = spacing;
-            this.includeEdge = includeEdge;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view); // item position
-            int column = position % spanCount; // item column
-
-            if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
-
-                if (position < spanCount) { // top edge
-                    outRect.top = spacing;
-                }
-                outRect.bottom = spacing; // item bottom
-            } else {
-                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
-                if (position >= spanCount) {
-                    outRect.top = spacing; // item top
-                }
-            }
-        }
-    }
-
-    /**
-     * Converting dp to pixel
-     */
-    private int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
-    }
 
 
 
@@ -257,13 +194,13 @@ public class SportsFragment extends Fragment {
                 if (report.areAllPermissionsGranted()){
 
 
-                    fetchVideoByPath(recycler_view_sport_trending,TRENDING);
+                    fetchVideoByPath(recycler_view_sport_trending, Paths.sportsBundesliga);
+                    fetchVideoByPath(recycler_view_sport_pickOfTheWeek,Paths.sportsEpl);
+                    fetchVideoByPath(recycler_view_sport_africa,Paths.sportsSeriaA);
 
-                    fetchVideoByPath(recycler_view_sport_pickOfTheWeek,PICKOFTHEWEEK);
-                    fetchVideoByPath(recycler_view_sport_africa,AFRICA);
-                    fetchVideoByPath(recycler_view_sport_bollywood,BOLLYWOOD);
-                    fetchVideoByPath(recycler_view_sport_nollywood,NOLLYWOOD);
-                    fetchVideoByPath(recycler_view_sport_hollywood,HOLLYWOOD);
+                    fetchVideoByPath(recycler_view_sport_bollywood,Paths.sportsLaliga);
+                    fetchVideoByPath(recycler_view_sport_nollywood,Paths.sportsleague1);
+                    fetchVideoByPath(recycler_view_sport_hollywood,Paths.sportsHightLights);
 
 
 
@@ -316,7 +253,5 @@ stopPlayer();
         playThriller();
     }
 
-    public void pausPlayer(){
-        thriller_video.pause();
-    }
-}//end of class
+
+}/* end of class */

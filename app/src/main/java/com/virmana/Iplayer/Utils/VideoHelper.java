@@ -16,9 +16,11 @@ import android.provider.Settings;
 import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import com.virmana.Iplayer.entity.Analytics;
 import com.virmana.Iplayer.entity.Music;
 import com.virmana.Iplayer.entity.Video;
 import es.dmoral.toasty.Toasty;
+import io.paperdb.Paper;
 import timber.log.Timber;
 
 import java.io.File;
@@ -29,41 +31,8 @@ import java.util.Locale;
 
 public class VideoHelper {
 
-    public boolean isExternalStoragePresent() {
-
-        boolean mExternalStorageAvailable = false;
-        boolean mExternalStorageWriteable = false;
-        String state = Environment.getExternalStorageState();
-
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            // We can read and write the media
-            mExternalStorageAvailable = mExternalStorageWriteable = true;
-        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            // We can only read the media
-            mExternalStorageAvailable = true;
-            mExternalStorageWriteable = false;
-        } else {
-            // Something else is wrong. It may be one of many other states, but
-            // all we need
-            // to know is we can neither read nor write
-            mExternalStorageAvailable = mExternalStorageWriteable = false;
-        }
-        if (!((mExternalStorageAvailable) && (mExternalStorageWriteable))) {
 
 
-        }
-        return (mExternalStorageAvailable) && (mExternalStorageWriteable);
-    }
-
-
-
-    public void makeDir(Context context, String fileName){
-    File videoDir = new File(context.getFilesDir()+File.separator +"/Iplayer"+ fileName);
-
-    if (!videoDir.exists()) {
-    videoDir.mkdirs();
-    }
-             }
 
     public static String makeDirs(Context context, String fileName){
         File videoDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_MOVIES),fileName);
@@ -94,42 +63,6 @@ public class VideoHelper {
 
     }
 
-    public  List<Music> getAllAudioFromDevice(Context context) {
-
-      List<Music>  musicList = new ArrayList<>();
-
-        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String[] projection = {MediaStore.Audio.AudioColumns.DATA, MediaStore.Audio.AudioColumns.ALBUM, MediaStore.Audio.ArtistColumns.ARTIST,MediaStore.Audio.AudioColumns.TRACK
-        };
-        Cursor c = context.getContentResolver().query(uri, projection,null, null, null);
-
-        if (c != null) {
-            while (c.moveToNext()) {
-
-                Music audioModel = new Music();
-                String path = c.getString(0);
-                String album = c.getString(1);
-                String artist = c.getString(2);
-                String track =c.getString(3);
-
-                String name = path.substring(path.lastIndexOf("/") + 1);
-
-                audioModel.setArtistName(name);
-                audioModel.setArtistSong(track);
-              //  audioModel.setArtistPath(path);
-
-                Timber.v(" Album :%s", album);
-                Timber.v(" Artist :%s", artist);
-                Timber.v(" Track :%s", track);
-
-                musicList.add(audioModel);
-            }
-            c.close();
-        }
-
-        return musicList;
-    }
-
 
 
 
@@ -152,24 +85,19 @@ public class VideoHelper {
         AlertDialog alert = alertBuilder.create();
         alert.show();
     }
+
+    public static void initPaperDb(Context context){
+        Paper.init(context);
+
+    }
+
+    public static void writePaperDb(String key, ArrayList<Analytics> analytics ){
+        Paper.book("analytics").write(key,analytics);
+
+    }
+public static void savePaperDb(){
+        Paper.bookOn("/mnt/extSdCard/AVERTON/MovieDesc","analytics");
 }
-/*
-    Video videoModel = new Video();
-    String path = c.getString(6);
-    String videoDuration = c.getString(1);
-    String videoSize = c.getString(2);
-    String videoTitle = c.getString(5);
-
-    String vDuration = VideoHelper.timeConverter(Integer.parseInt(videoDuration));
-    String name = path.substring(path.lastIndexOf("/") + 1);
-
-                videoModel.setVideoName(name);
-                        videoModel.setVideoPath(path);
-                        videoModel.setVideoDuration(vDuration);
-                        videoModel.setVideoGenre(videoSize);
-//                audioModel.setArtistSong(album);
-                        //  audioModel.setArtistPath(path);
 
 
-                        arrayVideo.add(videoModel);
-*/
+}

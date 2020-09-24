@@ -1,7 +1,12 @@
 package com.virmana.Iplayer.ui.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
@@ -9,41 +14,48 @@ import android.os.Handler;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+
 
 import android.widget.SeekBar;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.LoadControl;
+
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.Timeline;
+
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-import com.google.android.exoplayer2.extractor.ExtractorsFactory;
+
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.upstream.ByteArrayDataSource;
+
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.upstream.FileDataSource;
-import com.google.android.exoplayer2.upstream.RawResourceDataSource;
-import com.google.android.exoplayer2.util.Util;
-import com.virmana.Iplayer.R;
-import com.virmana.Iplayer.entity.Music;
-import com.virmana.Iplayer.ui.Adapters.MusicAdapter;
-import com.virmana.Iplayer.ui.fragments.MusicFragment;
 
-import java.io.File;
+import com.google.android.exoplayer2.upstream.FileDataSource;
+
+import com.virmana.Iplayer.R;
+import com.virmana.Iplayer.Utils.MetadataExtractor;
+
+import com.virmana.Iplayer.Utils.Paths;
+import com.virmana.Iplayer.Utils.VideoHelper;
+import com.virmana.Iplayer.entity.Music;
+
+import com.virmana.Iplayer.ui.Adapters.PlaylistAdapter;
+
 import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.Locale;
+
+
 
 public class MusicPlayerActivity extends AppCompatActivity {
 
@@ -74,15 +86,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     exoPlayer.seekTo(0);
                     break;
                 case ExoPlayer.STATE_READY:
-                    Log.i(TAG,"ExoPlayer ready! pos: "+exoPlayer.getCurrentPosition()
-                            +" max: "+stringForTime((int)exoPlayer.getDuration()));
+                    Log.i(TAG,"ExoPlayerActivity ready! pos: "+exoPlayer.getCurrentPosition()
+                            +" max: "+VideoHelper.timeConverter((int) exoPlayer.getDuration()));
                     setProgress();
                     break;
                 case ExoPlayer.STATE_BUFFERING:
                     Log.i(TAG,"Playback buffering!");
                     break;
                 case ExoPlayer.STATE_IDLE:
-                    Log.i(TAG,"ExoPlayer idle!");
+                    Log.i(TAG,"ExoPlayerActivity idle!");
                     break;
             }
         }
@@ -100,23 +112,33 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private TextView txtCurrentTime, txtEndTime;
     private boolean isPlaying = false;
     private Intent intent;
-    private MusicFragment musicFragment;
+
     private static final String TAG = "MainActivity";
     private String musicPath;
+    private String tag;
+    private ImageView thumbnail;
+    private MetadataExtractor extractor;
+    private ArrayList<Music> playlist;
+    private PlaylistAdapter playlistAdapter;
+    private RecyclerView playlistRecyclerView;
+    private Toolbar toolbar;
 
-    private MusicAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_music);
 
 
-        intent = getIntent();
-         musicPath = intent.getStringExtra("musicPath");
 
 
 
-      prepareExoPlayerFromFileUri(Uri.parse(musicPath));
+            initViews();
+        initPlaylist();
+          prepareExoPlayerFromFileUri(Uri.parse(musicPath));
+        setPlayPause(!isPlaying);
+
+
 
     }
 
@@ -133,67 +155,71 @@ public class MusicPlayerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        DataSource.Factory factory = new DataSource.Factory() {
-            @Override
-            public DataSource createDataSource() {
-                return fileDataSource;
-            }
-        };
+        DataSource.Factory factory = () -> fileDataSource;
+
+
         MediaSource audioSource = new ExtractorMediaSource(fileDataSource.getUri(),
                 factory, new DefaultExtractorsFactory(), null, null);
 
-        exoPlayer.prepare(audioSource);
-        initMediaControls();
-    }
-
-
-    /**
-     * Prepares exoplayer for audio playback from a remote URL audiofile. Should work with most
-     * popular audiofile types (.mp3, .m4a,...)
-     * @param uri Provide a Uri in a form of Uri.parse("http://blabla.bleble.com/blublu.mp3)
-     */
-    private void prepareExoPlayerFromURL(Uri uri){
-
-        TrackSelector trackSelector = new DefaultTrackSelector();
-
-        LoadControl loadControl = new DefaultLoadControl();
-
-        exoPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl);
-
-        DefaultDataSourceFactory dataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "exoplayer2example"), null);
-        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-        MediaSource audioSource = new ExtractorMediaSource(uri, dataSourceFactory, extractorsFactory, null, null);
-        exoPlayer.addListener(eventListener);
 
         exoPlayer.prepare(audioSource);
         initMediaControls();
     }
 
-    private void prepareExoPlayerFromRawResourceUri(Uri uri){
-        exoPlayer = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector(), new DefaultLoadControl());
-        exoPlayer.addListener(eventListener);
 
-        DataSpec dataSpec = new DataSpec(uri);
-        final RawResourceDataSource rawResourceDataSource = new RawResourceDataSource(this);
-        try {
-            rawResourceDataSource.open(dataSpec);
-        } catch (RawResourceDataSource.RawResourceDataSourceException e) {
-            e.printStackTrace();
+   private void initViews(){
+
+       intent = getIntent();
+       musicPath = intent.getStringExtra("musicPath");
+       tag = intent.getStringExtra("tag");
+
+       toolbar = findViewById(R.id.toolbar);
+       setSupportActionBar(toolbar);
+
+       playlistRecyclerView = findViewById(R.id.music_activity_playlist);
+        extractor = new MetadataExtractor();
+       thumbnail = findViewById(R.id.musi_player_thumbnail);
+
+       RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.video_art)
+               .error(R.drawable.video_art).fitCenter();
+
+       Glide.with(this).setDefaultRequestOptions(requestOptions).load(extractor.getCoverArt(musicPath)).into(thumbnail);
+
+   }
+
+    private void initPlaylist(){
+
+        switch (tag){
+
+            case "afrobeat":
+                fetchMusicByPath(playlistRecyclerView, Paths.musicAfrobeats);
+                break;
+            case "soul":
+                fetchMusicByPath(playlistRecyclerView,Paths.musicSouls);
+            case "hiphop":
+                fetchMusicByPath(playlistRecyclerView,Paths.musichipHop);
+
         }
 
-        DataSource.Factory factory = new DataSource.Factory() {
-            @Override
-            public DataSource createDataSource() {
-                return rawResourceDataSource;
-            }
-        };
 
-        MediaSource audioSource = new ExtractorMediaSource(rawResourceDataSource.getUri(),
-                factory, new DefaultExtractorsFactory(), null, null);
 
-        exoPlayer.prepare(audioSource);
-        initMediaControls();
+
+
+
+
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater= getMenuInflater();
+        menuInflater.inflate(R.menu.menu_playlist,menu);
+        return true;
+    }
+
+
+
 
     private void initMediaControls() {
         initPlayButton();
@@ -203,7 +229,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     private void initPlayButton() {
         btnPlay = findViewById(R.id.btnPlay);
-
         btnPlay.setOnClickListener(view -> setPlayPause(!isPlaying));
     }
 
@@ -226,6 +251,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         txtCurrentTime = findViewById(R.id.time_current);
         txtEndTime = findViewById(R.id.player_end_time);
     }
+/*
 
     private String stringForTime(int timeMs) {
         StringBuilder mFormatBuilder;
@@ -245,12 +271,13 @@ public class MusicPlayerActivity extends AppCompatActivity {
             return mFormatter.format("%02d:%02d", minutes, seconds).toString();
         }
     }
+*/
 
     private void setProgress() {
         seekPlayerProgress.setProgress(0);
         seekPlayerProgress.setMax((int) exoPlayer.getDuration()/1000);
-        txtCurrentTime.setText(stringForTime((int)exoPlayer.getCurrentPosition()));
-        txtEndTime.setText(stringForTime((int)exoPlayer.getDuration()));
+        txtCurrentTime.setText(VideoHelper.timeConverter((int) exoPlayer.getCurrentPosition()));
+        txtEndTime.setText(VideoHelper.timeConverter((int) exoPlayer.getDuration()));
 
         if(handler == null)handler = new Handler();
         //Make sure you update Seekbar on UI thread
@@ -261,8 +288,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     seekPlayerProgress.setMax((int) exoPlayer.getDuration()/1000);
                     int mCurrentPosition = (int) exoPlayer.getCurrentPosition() / 1000;
                     seekPlayerProgress.setProgress(mCurrentPosition);
-                    txtCurrentTime.setText(stringForTime((int)exoPlayer.getCurrentPosition()));
-                    txtEndTime.setText(stringForTime((int)exoPlayer.getDuration()));
+                    txtCurrentTime.setText(VideoHelper.timeConverter((int) exoPlayer.getCurrentPosition()));
+                    txtEndTime.setText(VideoHelper.timeConverter((int) exoPlayer.getDuration()));
 
                     handler.postDelayed(this, 1000);
                 }
@@ -308,4 +335,64 @@ public class MusicPlayerActivity extends AppCompatActivity {
         exoPlayer.release();
 
     }
+
+
+    private void fetchMusicByPath(RecyclerView recyclerView, String folderPath){
+
+        String selection = MediaStore.Audio.AudioColumns.DATA + " like ? ";
+        String[] selectionArgs =new String [] {"%"+folderPath+"%"};
+        playlist = new ArrayList<>();
+
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        String[] projection = {MediaStore.Audio.AudioColumns.DATA,
+                MediaStore.Audio.AudioColumns.ALBUM,
+                MediaStore.Audio.ArtistColumns.ARTIST
+        };
+        Cursor c = this.getContentResolver().query(uri, projection,selection, selectionArgs, null);
+
+        if (c != null) {
+            while (c.moveToNext()) {
+
+                Music audioModel = new Music();
+                String path = c.getString(0);
+                String album = c.getString(1);
+                String artist = c.getString(2);
+
+
+                String ext = path.substring(path.lastIndexOf("/") + 1);
+                String songName = ext.substring(0,ext.lastIndexOf("."));
+
+
+                audioModel.setArtistName(artist);
+                audioModel.setArtistSong(songName);
+                audioModel.setArtistPath(path);
+
+
+                playlist.add(audioModel);
+
+                Log.v(" Album :%s", album);
+                Log.v(" Artist :%s", artist);
+                Log.v(" path :%s", path);
+
+
+
+            }
+
+            c.close();
+        }
+
+        playlistAdapter = new PlaylistAdapter(this,playlist);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(playlistAdapter);
+
+
+        Log.v("Adapter","adapter showing");
+        // recycler_view_series_fragment.setLayoutManager(gridLayoutManager);     }
+
+    }
+
+
 }

@@ -53,7 +53,7 @@
                 android:id="@+id/videoThumbnail"
                 android:layout_width="120dp"
                 android:layout_height="170dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/bg_image_view"
                 android:clickable="true"
                 android:src="@drawable/album_placeholder"
                 android:scaleType="fitXY" />
