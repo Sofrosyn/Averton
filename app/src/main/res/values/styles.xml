@@ -25,7 +25,10 @@
         <item name="fontFamily">@font/font</item>
   <!--      <item name="castMiniControllerStyle">@style/CustomCastMiniController</item>-->
     </style>
+<style name="music.progress" parent="Widget.AppCompat.SeekBar">
 
+
+</style>
     <style name="NavigationView"  parent="Base.Theme.AppCompat">
 
         <item name="android:listDivider">@color/white_text</item>

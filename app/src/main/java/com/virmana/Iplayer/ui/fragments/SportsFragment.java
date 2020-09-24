@@ -26,6 +26,7 @@ import com.virmana.Iplayer.Utils.Paths;
 import com.virmana.Iplayer.Utils.VideoHelper;
 import com.virmana.Iplayer.entity.Video;
 import com.virmana.Iplayer.ui.Adapters.MovieAdapter;
+import com.virmana.Iplayer.ui.Adapters.SportAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class SportsFragment extends Fragment {
     private RecyclerView recycler_view_sport_bollywood;
     private RecyclerView recycler_view_sport_nollywood;
     private  ArrayList<Video> arrayVideo;
-    private MovieAdapter movieAdapter;
+    private SportAdapter sportAdapter;
     private VideoHelper videoHelper;
     private VideoView thriller_video;
 
@@ -163,7 +164,7 @@ public class SportsFragment extends Fragment {
 
             c.close();
         }
-        movieAdapter = new MovieAdapter(getActivity(),arrayVideo);
+        sportAdapter = new SportAdapter(getActivity(),arrayVideo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -173,7 +174,7 @@ public class SportsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
 
-        recyclerView.setAdapter(movieAdapter);
+        recyclerView.setAdapter(sportAdapter);
 
     }
 

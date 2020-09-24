@@ -17,6 +17,7 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true"
@@ -48,7 +49,7 @@
 
         <activity
                 android:name="com.virmana.Iplayer.ui.activities.MusicPlayerActivity"
-                android:theme="@style/AppThemeNoAction"
+                android:theme="@style/Theme.Design.NoActionBar"
                 android:configChanges="orientation|screenSize|keyboardHidden"/>
 
 
@@ -73,7 +74,9 @@
 
 
 
-        <activity android:name=".ui.activities.ExoPlayerActivity" android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".ui.activities.ExoPlayerActivity"
+                  android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"
+                  android:configChanges="orientation|screenSize|keyboardHidden"/>
 
 
 

@@ -5,8 +5,11 @@ import android.database.Cursor;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
@@ -52,6 +55,7 @@ import com.virmana.Iplayer.Utils.VideoHelper;
 import com.virmana.Iplayer.entity.Music;
 
 import com.virmana.Iplayer.ui.Adapters.PlaylistAdapter;
+import es.dmoral.toasty.Toasty;
 
 import java.util.ArrayList;
 
@@ -128,10 +132,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_music);
-
-
-
-
+        toolbar = findViewById(R.id.music_activity_toolBar);
+        toolbar.setTitle("Music Player");
+        setSupportActionBar(toolbar);
 
             initViews();
         initPlaylist();
@@ -173,8 +176,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
        musicPath = intent.getStringExtra("musicPath");
        tag = intent.getStringExtra("tag");
 
-       toolbar = findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
+
 
        playlistRecyclerView = findViewById(R.id.music_activity_playlist);
         extractor = new MetadataExtractor();
@@ -191,14 +193,27 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         switch (tag){
 
-            case "afrobeat":
+            case "afrobeats":
                 fetchMusicByPath(playlistRecyclerView, Paths.musicAfrobeats);
                 break;
             case "soul":
                 fetchMusicByPath(playlistRecyclerView,Paths.musicSouls);
+                break;
             case "hiphop":
                 fetchMusicByPath(playlistRecyclerView,Paths.musichipHop);
-
+                break;
+            case "billboards":
+                fetchMusicByPath(playlistRecyclerView, Paths.musicBillBoard);
+                break;
+            case "trending":
+                fetchMusicByPath(playlistRecyclerView,Paths.musicTrending);
+                break;
+            case "rnb":
+                fetchMusicByPath(playlistRecyclerView,Paths.musicRnB);
+                break;
+            case "toprated":
+                fetchMusicByPath(playlistRecyclerView,Paths.musicAfricaTopRated);
+                break;
         }
 
 
@@ -212,14 +227,24 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // super.onCreateOptionsMenu(menu);
-        MenuInflater menuInflater= getMenuInflater();
-        menuInflater.inflate(R.menu.menu_playlist,menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_playlist, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+         super.onOptionsItemSelected(item);
 
+         switch (item.getItemId()){
+             case R.id.nav_playlist_checked:
+            //     Toasty.info(this,"itemclicked",Toasty.LENGTH_SHORT).show();
+                  playlistRecyclerView.setVisibility(View.VISIBLE);
+                  break;
 
+         }
+         return true;
+    }
 
     private void initMediaControls() {
         initPlayButton();

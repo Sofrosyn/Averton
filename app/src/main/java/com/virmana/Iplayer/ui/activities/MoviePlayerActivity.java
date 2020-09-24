@@ -194,7 +194,7 @@ public class MoviePlayerActivity extends Swipper {
        // /data/data/com.virmana.flix/files/analytics/Movies.pt
         VideoHelper.writePaperDb("Movies",analyticsArrayList);
 
-        Toasty.info(this,"Save to "+Paper.book().getPath("Movies"),Toasty.LENGTH_SHORT).show();
+     //   Toasty.info(this,"Save to "+Paper.book().getPath("Movies"),Toasty.LENGTH_SHORT).show();
         Log.v("Book path",Paper.book().getPath("Movies"));
 
     }
