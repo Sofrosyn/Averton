@@ -2,15 +2,12 @@ package com.virmana.Iplayer.ui.fragments;
 
 
 import android.Manifest;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.provider.MediaStore;
-import android.util.TypedValue;
 import android.widget.*;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -32,7 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.virmana.Iplayer.R;
-import com.virmana.Iplayer.entity.Genre;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +43,7 @@ public class MoviesFragment extends Fragment {
 
     private View view;
 
-    private List<Genre> genreList =  new ArrayList<>();
+
     private String thriller = "file://"+"/mnt/extSdCard/AVERTON/Thriller/movie.mp4";
 
     private RecyclerView recycler_view_movies_trending;

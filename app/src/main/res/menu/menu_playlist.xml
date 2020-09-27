@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-<item android:id="@+id/nav_playlist_checked"
+<group android:checkableBehavior="single"  >
+    <item android:id="@+id/nav_playlist_checked"
       android:title="playlistShow"
       android:icon="@drawable/ic_playlist_play_black_24dp"
       app:showAsAction="ifRoom">
 </item>
 
+    <item android:id="@+id/nav_playlist_unchecked"
+          android:title="playlistHide"
+          android:icon="@drawable/ic_playlist_play_black_24dp"
+          app:showAsAction="ifRoom">
+    </item>
+
+</group>
 
 
 </menu>

@@ -74,7 +74,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
 
 
 
-            Intent intent = new Intent(mContext, MoviePlayerActivity.class );
+            Intent intent = new Intent(mContext, ExoPlayerActivity.class );
             intent.putExtra("videoPath",video.getVideoPath());
             intent.putExtra("videoName",video.getVideoName());
             intent.putExtra("Activity",2);

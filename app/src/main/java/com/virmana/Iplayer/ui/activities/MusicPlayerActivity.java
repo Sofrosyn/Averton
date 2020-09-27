@@ -240,8 +240,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
              case R.id.nav_playlist_checked:
             //     Toasty.info(this,"itemclicked",Toasty.LENGTH_SHORT).show();
                   playlistRecyclerView.setVisibility(View.VISIBLE);
-                  break;
 
+                  break;
+             case R.id.nav_playlist_unchecked:
+                 playlistRecyclerView.setVisibility(View.INVISIBLE);
+                 break;
          }
          return true;
     }
