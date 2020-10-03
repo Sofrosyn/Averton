@@ -2,29 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-              android:layout_width="match_parent"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="match_parent" app:cardElevation="4dp" app:cardBackgroundColor="@color/gray"
-                                               android:id="@+id/news_card" android:layout_marginLeft="16dp" android:layout_marginRight="16dp">
+            <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="match_parent" app:cardElevation="4dp" app:cardBackgroundColor="@color/gray"
+                                               android:id="@+id/news_card"  >
 
             <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
-            <ImageView android:layout_width="100dp" android:layout_height="100dp" android:src="@drawable/news_thumbnail" android:scaleType="fitXY"
+            <ImageView android:layout_width="200dp" android:layout_height="200dp" android:src="@drawable/news_thumbnail" android:scaleType="fitXY"
                                                           android:id="@+id/news_images"
                                                           />
 
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_toRightOf="@id/news_images"
-                          android:layout_toEndOf="@id/news_images" android:layout_margin="8dp"  android:layout_marginLeft="8dp">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
+                          android:layout_below="@id/news_images"  android:layout_marginTop="8dp" >
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/news_headlines" android:text="headlines"
                 android:fontFamily="@font/roboto" android:textStyle="bold" android:textSize="18dp" android:textColor="@color/white"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/news_description" android:text="description"
-                          android:fontFamily="@font/roboto"  android:textSize="15dp" android:textColor="@color/white"/>
-            </LinearLayout>
-
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_margin="8dp"
-                          android:gravity="center" android:background="@color/red" android:layout_alignParentRight="true" android:visibility="gone">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Averton" android:textColor="@color/white"
-                          android:fontFamily="@font/averton" android:textStyle="bold" android:textSize="18dp" />
+                          android:fontFamily="@font/roboto"  android:textSize="15dp" android:textColor="@color/white" android:layout_marginTop="4dp"/>
             </LinearLayout>
 
 

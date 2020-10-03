@@ -6,7 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.MoviesFragment">
 <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" >
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Movies" android:textSize="40dp"
+              android:fontFamily="@font/roboto" android:layout_gravity="center_horizontal" android:textStyle="bold"
+    />
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" android:layout_marginTop="16dp">
 
 
         <VideoView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer"
@@ -43,7 +48,7 @@
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Trending" android:textStyle="bold" android:textSize="24dp" />
+                                  android:text="Trending" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
@@ -64,7 +69,7 @@
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Pick of the Week" android:textStyle="bold" android:textSize="24dp" />
+                                  android:text="Pick of the Week" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
 
                     </LinearLayout>
@@ -89,7 +94,7 @@
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Hollywood" android:textStyle="bold" android:textSize="24dp"  />
+                                  android:text="Hollywood" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
                     </LinearLayout>
@@ -114,7 +119,7 @@
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Nollywood" android:textStyle="bold" android:textSize="24dp"  />
+                                  android:text="Nollywood" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
@@ -136,7 +141,7 @@
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Bollywood" android:textStyle="bold" android:textSize="24dp"  />
+                                  android:text="Bollywood" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
                     </LinearLayout>
@@ -159,7 +164,7 @@
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Documentary" android:textStyle="bold" android:textSize="24dp"  />
+                                  android:text="Documentary" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView

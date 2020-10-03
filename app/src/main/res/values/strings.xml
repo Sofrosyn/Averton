@@ -113,4 +113,11 @@
     <string name="use_content_for_free">Now you can use this premium content for free</string>
     <string name="AD_MOB_ENABLED_BANNER">true</string>
 
+    <string name="loren_ipseum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Curabitur quis hendrerit lectus, quis imperdiet turpis. Fusce elementum cursus aliquet.
+        Aenean in porttitor augue, elementum dictum lacus. Aenean rutrum elit sed posuere condimentum.
+        In hac habitasse platea dictumst. Integer vel sapien maximus mauris suscipit imperdiet non ut ipsum.
+        Nam mattis condimentum velit vitae volutpat. Duis metus lacus, pretium rutrum leo sit amet, blandit maximus dolor.
+        Etiam tristique porta arcu, ac feugiat lorem hendrerit sit amet. </string>
+
 </resources>

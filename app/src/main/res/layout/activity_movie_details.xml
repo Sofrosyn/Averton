@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                     xmlns:tools="http://schemas.android.com/tools"
+                                                     android:layout_width="match_parent"
+                                                     android:fitsSystemWindows="true" tools:context=".ui.activities.MovieDescActivity"
+                                                     android:layout_height="match_parent">
+
+
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:fitsSystemWindows="true"
+                                                         android:layout_height="wrap_content" android:id="@+id/appBarContainer">
+
+    <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent" android:layout_height="400dp" android:fitsSystemWindows="true"
+                                                     android:id="@+id/appBar_layout" app:layout_constraintTop_toTopOf="parent" app:layout_constraintRight_toRightOf="parent">
+
+
+
+            <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:fitsSystemWindows="true"
+                       android:scaleType="fitCenter" android:id="@+id/movie_description_image" />
+
+            <androidx.appcompat.widget.Toolbar android:layout_width="match_parent" android:layout_height="wrap_content"
+                                               app:layout_collapseMode="pin" android:background="@color/transparent" android:id="@+id/movies_description_toolbar"/>
+
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <include layout="@layout/include_movie_details"  android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/appBarContainer"/>
+
+</RelativeLayout>

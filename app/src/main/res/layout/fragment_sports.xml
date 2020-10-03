@@ -7,9 +7,11 @@
     tools:context=".ui.fragments.SportsFragment">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sports" android:textSize="40dp"
+                  android:fontFamily="@font/roboto" android:layout_gravity="center_horizontal" android:textStyle="bold"
+        />
 
-
-        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" >
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" android:layout_marginTop="16dp">
 
             <!--Video view-->
             <VideoView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer" android:layout_alignParentLeft="true"
@@ -49,7 +51,7 @@
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Trending" android:textStyle="bold" android:textSize="18dp" />
+                                  android:text="Trending" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
 
                     </LinearLayout>
@@ -71,7 +73,7 @@
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Pick of the Week" android:textStyle="bold" android:textSize="18dp" />
+                                  android:text="Pick of the Week" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
 
                     </LinearLayout>
@@ -96,7 +98,7 @@
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="EPL" android:textStyle="bold" android:textSize="18dp"  />
+                                  android:text="EPL" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
                     </LinearLayout>
@@ -117,11 +119,12 @@
                         android:layout_weight="1"
                         android:layout_marginTop="4dp"
                         android:orientation="vertical">
+                    <!--TODO: rename recycler views-->
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Seria A" android:textStyle="bold" android:textSize="18dp"  />
+                                  android:text="Seria A" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
                     </LinearLayout>
@@ -144,7 +147,7 @@
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="La Liga" android:textStyle="bold" android:textSize="18dp"  />
+                                  android:text="La Liga" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
                     </LinearLayout>
@@ -167,7 +170,7 @@
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Bundesliga" android:textStyle="bold" android:textSize="18dp"  />
+                                  android:text="Bundesliga" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
                     </LinearLayout>

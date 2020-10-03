@@ -12,17 +12,21 @@
 
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
-                          android:id="@+id/linear_top">
+                          android:id="@+id/linear_top" android:layout_marginTop="16dp">
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_horizontal">
-                    <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:text="Play"
-                                                                       android:layout_height="wrap_content" android:drawableLeft="@drawable/ic_play"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+                              android:layout_gravity="center_horizontal" >
+
+                    <Button android:layout_width="match_parent" android:text="Play" android:layout_height="wrap_content" android:id="@+id/movieDescPlayButton"
+                            android:background="@color/red" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
                 </LinearLayout>
 
-
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginLeft="16dp" android:layout_marginRight="16dp">
+<!--TODO: replace description with Imdb movie description-->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:orientation="horizontal" android:layout_marginLeft="16dp" android:layout_marginTop="8dp"
+                              android:layout_marginRight="16dp" android:gravity="center_horizontal">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="14dp" android:textColor="@color/white"
-                              android:text="Description" android:id="@+id/movie_description_text"/>
+                              android:text="@string/loren_ipseum" android:id="@+id/movie_description_text" />
 
                 </LinearLayout>
             </LinearLayout>

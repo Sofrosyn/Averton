@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/home/charmides/idea-IC-193.6494.35/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_playlist_play_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/home/charmides/idea-IC-193.6494.35/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_play_circle_outline_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="f4f4f4" />
-                            <entry key="outputName" value="ic_playlist_play_black_24dp" />
+                            <entry key="outputName" value="ic_play_circle_outline_black_24dp" />
                             <entry key="sourceFile" value="$PROJECT_DIR$/../../../material-design-icons-master/image/svg/production/ic_music_note_24px.svg" />
                           </map>
                         </option>

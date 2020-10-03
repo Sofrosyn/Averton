@@ -24,5 +24,7 @@
     <dimen name="ic_album_overflow_height">30dp</dimen>
     <dimen name="ic_album_overflow_margin_top">10dp</dimen>
     <dimen name="default_corner_radii">16</dimen>
+    <dimen name="movie_title">35dp</dimen>
+
     <integer name="grid_column">4</integer>
 </resources>

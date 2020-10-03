@@ -27,7 +27,7 @@
           app:showAsAction="always"
     />
     <item android:id="@+id/nav_news"
-          android:title="News"
+          android:title="More"
           android:icon="@drawable/ic_apps"
           android:orderInCategory="5"
           app:showAsAction="always"

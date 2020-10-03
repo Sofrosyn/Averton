@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.virmana.Iplayer">
+    package="com.averton.Iplayer">
 
 
 
@@ -10,10 +10,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
-        android:name="com.virmana.Iplayer.MyApplication"
+        android:name="com.averton.Iplayer.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -35,20 +36,38 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+        
+        <receiver android:name="com.averton.Iplayer.ActivityRunOnStartUp"
+                  android:enabled="true"
+                  android:exported="true"
+                android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+<intent-filter>
+    <action android:name="android.intent.action.BOOT_COMPLETED"/>
+    <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+    <category android:name="android.intent.category.DEFAULT" />
+
+</intent-filter>
+
+
+        </receiver>
+        
+        
+        
+        
 
 
         <activity
-            android:name="com.virmana.Iplayer.ui.activities.IntroActivity"
+            android:name="com.averton.Iplayer.ui.activities.IntroActivity"
             android:theme="@style/AppTheme"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity
-                android:name="com.virmana.Iplayer.ui.activities.MoviePlayerActivity"
+                android:name="com.averton.Iplayer.ui.activities.MoviePlayerActivity"
                 android:theme="@style/AppThemeNoAction"
                 android:screenOrientation="landscape"
                 android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <activity
-                android:name="com.virmana.Iplayer.ui.activities.MusicPlayerActivity"
+                android:name="com.averton.Iplayer.ui.activities.MusicPlayerActivity"
                 android:theme="@style/Theme.Design.NoActionBar"
                 android:configChanges="orientation|screenSize|keyboardHidden"/>
 
@@ -57,7 +76,7 @@
 
 
         <activity
-            android:name="com.virmana.Iplayer.ui.activities.SplashActivity"
+            android:name="com.averton.Iplayer.ui.activities.SplashActivity"
             android:theme="@style/AppThemeActionDestils"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
@@ -67,17 +86,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.ReadNewsActivity" android:theme="@style/Theme.Design.NoActionBar"/>
-        <activity android:name=".ui.activities.HomeActivity"
+        <activity android:name="com.averton.Iplayer.ui.activities.ReadNewsActivity" android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.averton.Iplayer.ui.activities.HomeActivity"
         android:theme="@style/Theme.Design.NoActionBar"/>
 
 
 
 
-        <activity android:name=".ui.activities.ExoPlayerActivity"
+        <activity android:name="com.averton.Iplayer.ui.activities.ExoPlayerActivity"
                   android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"
                   android:configChanges="orientation|screenSize|keyboardHidden"/>
-
+        <activity android:name=".ui.activities.MovieDescActivity" android:theme="@style/Theme.Design.NoActionBar"/>
 
 
     </application>

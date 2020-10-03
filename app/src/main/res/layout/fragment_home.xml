@@ -7,7 +7,11 @@
 
 <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" >
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Home" android:textSize="40dp"
+              android:fontFamily="@font/roboto" android:layout_gravity="center_horizontal" android:textStyle="bold"
+    />
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" android:layout_marginTop="16dp">
 
 
         <com.synnapps.carouselview.CarouselView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer" app:indicatorGravity="bottom|center_horizontal"
@@ -47,7 +51,7 @@
                 android:orientation="vertical">
 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                  android:text="Trending" android:textStyle="bold" android:textSize="24dp" />
+                  android:text="Trending" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
                           android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
@@ -73,7 +77,7 @@
                     android:orientation="vertical">
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                              android:text="Pick of the Week" android:textStyle="bold" android:textSize="24dp" />
+                              android:text="Pick of the Week" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
@@ -102,7 +106,7 @@
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                           >
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                  android:text="BillBoard 100" android:textStyle="bold" android:textSize="24dp"  />
+                  android:text="BillBoard 100" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
                               android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
@@ -131,7 +135,7 @@
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                               >
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                              android:text="Hottest Vibes" android:textStyle="bold" android:textSize="24dp"  />
+                              android:text="Hottest Vibes" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
