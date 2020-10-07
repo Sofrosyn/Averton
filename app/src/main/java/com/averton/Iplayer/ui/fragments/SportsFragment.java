@@ -30,6 +30,7 @@ import com.averton.Iplayer.ui.Adapters.SportAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
 
 
 public class SportsFragment extends Fragment {
@@ -251,6 +252,8 @@ stopPlayer();
     public void onStart() {
         super.onStart();
         playThriller();
+
+        Toasty.info(getActivity(),"Scroll left for more sport videos",Toasty.LENGTH_LONG).show();
     }
 
 

@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:loaderExtraColor="@color/blue"
-        app:loaderPrimeColor="@color/colorAccent"
+        app:loaderPrimeColor="@color/colorPrimaryDark"
         app:loaderSize="normal"
         android:layout_weight="1"
         app:loaderRippleColor="@color/gray"

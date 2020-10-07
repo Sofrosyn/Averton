@@ -43,8 +43,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
     public void onBindViewHolder(@NonNull MovieAdapter.myViewHolder holder, int position) {
         Video video = videoList.get(position);
 
-        holder.videoGenre.setText(video.getVideoDuration());
-    MetadataExtractor extractor = new MetadataExtractor();
+    //    holder.videoGenre.setText(video.getVideoDuration());
+     MetadataExtractor extractor = new MetadataExtractor();
         String imageName = video.getVideoName()+".jpg";
         String imagePath = Paths.imagesMovieThumbnail+"/"+imageName;
         final Bitmap b = BitmapFactory.decodeFile(imagePath);
@@ -55,7 +55,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
     Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(extractor.getCoverArt(video.getVideoPath())).thumbnail(0.5f).into(holder.thumbnail);
 
 
-
+            holder.videoDate.setText(video.getVideoDate());
 
         holder.thumbnail.setOnClickListener(v -> {
             //Toasty.info(mContext,"clicked",Toasty.LENGTH_SHORT).show();
@@ -70,6 +70,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
             Intent intent = new Intent(mContext, MovieDescActivity.class );
             intent.putExtra("videoPath",video.getVideoPath());
             intent.putExtra("tag",tag);
+            intent.putExtra("videoDate",video.getVideoDate());
             intent.putExtra("videoName",video.getVideoName());
             intent.putExtra("Activity",2);
             intent.putExtra("noClicks",noClicks);
@@ -90,14 +91,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.myViewHolder
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        public TextView videoTitle, videoGenre;
+        public TextView videoDate, videoGenre;
         public ImageView thumbnail;
 
 
         public myViewHolder(View itemView) {
             super(itemView);
-            videoTitle = itemView.findViewById(R.id.video_title);
-            videoGenre = itemView.findViewById(R.id.video_Genre);
+            videoDate = itemView.findViewById(R.id.video_year);
+//            videoGenre = itemView.findViewById(R.id.video_Genre);
             thumbnail = itemView.findViewById(R.id.videoThumbnail);
         }
     }

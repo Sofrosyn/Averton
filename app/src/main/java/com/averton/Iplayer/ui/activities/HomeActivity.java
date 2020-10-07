@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_nav_home);
         container = findViewById(R.id.home_activity_framelayout);
-        switchFragment(new HomeFragment());
+        switchFragment(new MoviesFragment());
         initViews();
     }
 
@@ -37,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.nav_home:
-                    switchFragment(new HomeFragment());
+                    switchFragment(new DocumentaryFragment());
                     return true;
 
                 case R.id.nav_movies:

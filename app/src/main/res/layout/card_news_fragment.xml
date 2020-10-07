@@ -14,7 +14,7 @@
                                                           />
 
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
-                          android:layout_below="@id/news_images"  android:layout_marginTop="8dp" >
+                          android:layout_below="@id/news_images"  android:layout_marginTop="8dp" android:layout_marginLeft="8dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/news_headlines" android:text="headlines"
                 android:fontFamily="@font/roboto" android:textStyle="bold" android:textSize="18dp" android:textColor="@color/white"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/news_description" android:text="description"

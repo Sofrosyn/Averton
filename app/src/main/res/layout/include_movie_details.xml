@@ -4,6 +4,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+
+
+
+    <Button android:layout_width="match_parent" android:text="Play" android:layout_height="wrap_content" android:id="@+id/movieDescPlayButton"
+        android:background="@color/red" android:layout_marginLeft="16dp" android:layout_marginRight="16dp" android:layout_marginTop="8dp"/>
+
+
+
+
+
     <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
 
 
@@ -12,28 +22,39 @@
 
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
-                          android:id="@+id/linear_top" android:layout_marginTop="16dp">
+                          android:id="@+id/linear_top" >
 
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
-                              android:layout_gravity="center_horizontal" >
-
-                    <Button android:layout_width="match_parent" android:text="Play" android:layout_height="wrap_content" android:id="@+id/movieDescPlayButton"
-                            android:background="@color/red" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
-                </LinearLayout>
 
 <!--TODO: replace description with Imdb movie description-->
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                              android:orientation="horizontal" android:layout_marginLeft="16dp" android:layout_marginTop="8dp"
-                              android:layout_marginRight="16dp" android:gravity="center_horizontal">
+                              android:orientation="vertical" android:layout_marginLeft="16dp" android:layout_marginTop="8dp"
+                              android:layout_marginRight="16dp"  >
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="14dp" android:textColor="@color/white"
-                              android:text="@string/loren_ipseum" android:id="@+id/movie_description_text" />
+                              android:text="@string/loren_ipseum" android:id="@+id/movie_description_text"
+                        android:fontFamily="@font/roboto"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content" android:layout_marginTop="16dp" android:orientation="horizontal"
+                    android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+
+            <TextView
+            android:layout_width="wrap_content" android:text="Movie Date :" android:fontFamily="@font/roboto" android:textSize="18sp"
+                android:layout_height="wrap_content"  android:id="@+id/movie_description_movieDate"/>
+
+                    <TextView
+                        android:layout_width="wrap_content" android:text="Movie Genre :" android:fontFamily="@font/roboto" android:textSize="18sp"
+                        android:layout_height="wrap_content"  android:layout_marginLeft="16dp" android:id="@+id/movie_description_movieGenre"/>
+
+
 
                 </LinearLayout>
-            </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
                           android:layout_below="@id/linear_top"  android:layout_marginTop="16dp"
-                          android:weightSum="4">
+                          android:weightSum="1">
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -42,17 +63,20 @@
                         android:orientation="vertical">
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Comedy" android:textStyle="bold" android:textSize="24dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
+                                  android:text="Related Movies" android:textStyle="bold" android:textSize="24dp" android:layout_marginLeft="8dp"/>
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_movies_desc_comedy"
+                            android:id="@+id/recycler_view_movies_desc_related"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                 </LinearLayout>
 
 
+
+
+<!--
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -108,6 +132,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                 </LinearLayout>
+
+    -->
+            </LinearLayout>
             </LinearLayout>
 
         </RelativeLayout>

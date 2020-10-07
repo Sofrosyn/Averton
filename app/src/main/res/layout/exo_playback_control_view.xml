@@ -36,7 +36,7 @@
             android:focusable="true"
             android:id="@+id/image_view_exo_player_subtitles"
             android:padding="5dp"
-            android:tint="@color/white"
+            app:tint="@color/white"
             app:srcCompat="@drawable/ic_subtitles"
             android:layout_width="40dp"
             android:layout_height="40dp" />
@@ -50,7 +50,7 @@
         android:clickable="true"
         android:id="@+id/image_view_exo_player_back"
         android:padding="7dp"
-        android:tint="@color/white"
+        app:tint="@color/white"
         app:srcCompat="@drawable/ic_arrow_back"
         android:layout_width="40dp"
         android:layout_height="40dp" />
@@ -136,7 +136,7 @@
                     android:visibility="visible"
                     android:padding="15dp"
                     android:layout_width="80dp"
-                    android:tint="@color/white"
+                    app:tint="@color/white"
                     app:srcCompat="@drawable/ic_replay_10"
                     android:id="@+id/image_view_exo_player_replay_10"
                     android:layout_height="80dp" />
@@ -152,7 +152,7 @@
                     android:clickable="true"
                     android:padding="0dp"
                     android:layout_width="80dp"
-                    android:tint="@color/white"
+                    app:tint="@color/white"
                     app:srcCompat="@drawable/ic_media_play"
                     android:id="@+id/exo_play"
                     android:layout_height="80dp" />
@@ -163,7 +163,7 @@
                     android:visibility="visible"
                     android:padding="0dp"
                     android:layout_width="80dp"
-                    android:tint="@color/white"
+                    app:tint="@color/white"
                     app:srcCompat="@drawable/ic_media_pause"
                     android:id="@+id/exo_pause"
                     android:layout_height="80dp" />
@@ -181,7 +181,7 @@
                     android:visibility="visible"
                     android:padding="10dp"
                     android:layout_width="80dp"
-                    android:tint="@color/white"
+                    app:tint="@color/white"
                     app:srcCompat="@drawable/ic_forward_10"
                     android:id="@+id/image_view_exo_player_forward_10"
                     android:layout_height="80dp" />

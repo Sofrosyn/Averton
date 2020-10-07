@@ -34,6 +34,7 @@ import com.averton.Iplayer.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
 
 
 /**
@@ -139,7 +140,8 @@ public class MoviesFragment extends Fragment {
                 MediaStore.Video.Media.MIME_TYPE,
                 MediaStore.Video.Media.TITLE
                 ,MediaStore.Video.Media.DISPLAY_NAME,
-                MediaStore.Video.Media.DATA
+                MediaStore.Video.Media.DATA,
+                MediaStore.Video.Media.DATE_TAKEN
         };
         Cursor c = getActivity().getContentResolver().query(uri, projection,selection, selectionArgs, null);
 
@@ -151,7 +153,7 @@ public class MoviesFragment extends Fragment {
                 String videoDuration = c.getString(1);
                 String videoSize = c.getString(2);
                 String videoTitle = c.getString(5);
-
+                String videoDate = c.getString(7);
                 String vDuration = VideoHelper.timeConverter(Integer.parseInt(videoDuration));
                 String name = path.substring(path.lastIndexOf("/") + 1);
                 String thumbnails = path.substring(0,path.lastIndexOf("/"));
@@ -160,6 +162,7 @@ public class MoviesFragment extends Fragment {
                 videoModel.setVideoPath(path);
                 videoModel.setVideoDuration(vDuration);
                 videoModel.setVideoGenre(videoSize);
+                videoModel.setVideoDate(VideoHelper.years(Long.parseLong(videoDate)));
                 videoModel.setVideoThumbNail(thumbnails);
 
 //                audioModel.setArtistSong(album);
@@ -235,8 +238,9 @@ public class MoviesFragment extends Fragment {
         super.onStart();
         stopPlayer();
 
-    playThriller();
+        playThriller();
 
+        Toasty.info(getActivity(),"Scroll left for more movies",Toasty.LENGTH_LONG).show();
         }
 
     @Override

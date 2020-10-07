@@ -7,9 +7,19 @@
     tools:context=".ui.fragments.SportsFragment">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sports" android:textSize="40dp"
-                  android:fontFamily="@font/roboto" android:layout_gravity="center_horizontal" android:textStyle="bold"
-        />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent" android:layout_marginTop="8dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
+                android:layout_height="50dp" android:layout_marginLeft="8dp"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sports" android:textSize="40dp"
+                android:fontFamily="@font/nexa" android:layout_gravity="center_horizontal" android:textStyle="bold" android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
 
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" android:layout_marginTop="16dp">
 
@@ -50,7 +60,7 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Trending" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
 
@@ -72,7 +82,7 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Pick of the Week" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
 
@@ -97,7 +107,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="EPL" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
@@ -123,7 +133,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Seria A" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
@@ -146,7 +156,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="La Liga" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
@@ -169,7 +179,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Bundesliga" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 

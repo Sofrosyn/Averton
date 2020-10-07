@@ -18,13 +18,32 @@ public class MetadataExtractor {
             albumCover = metadataRetriever.getEmbeddedPicture();
  //           image = BitmapFactory.decodeByteArray(albumCover,0,albumCover.length);
 
-
+            metadataRetriever.release();
         }catch(Exception e){
-
+            metadataRetriever.release();
             e.printStackTrace();
 
         }
         return albumCover;
+
     }
+
+
+    public String yearCreated(String path){
+        String year = "";
+        metadataRetriever = new MediaMetadataRetriever();
+        metadataRetriever.setDataSource(path);
+
+        try {
+
+           year = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+
+        }catch (Exception e){
+            e.getMessage();
+
+        }
+        return year;
+    }
+
 
 }

@@ -14,6 +14,7 @@ import android.util.TypedValue;
 import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.averton.Iplayer.Utils.MetadataExtractor;
 import com.averton.Iplayer.Utils.Tag;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -30,7 +32,6 @@ import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.orhanobut.hawk.Hawk;
 import com.synnapps.carouselview.CarouselView;
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.Paths;
@@ -47,17 +48,20 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class DocumentaryFragment extends Fragment {
 
 
     private View view;
 
+/*
     private RecyclerView recycler_view_home_music;
     private RecyclerView recycler_view_home_video;
     private RecyclerView recycler_view_home_news_local;
     private RecyclerView recycler_view_home_news_international;
     private RecyclerView recycler_view_home_music_hotVibes;
     private RecyclerView recycler_view_home_video_pickOfTheWeek;
+*/
+    private RecyclerView recycler_view_documentary;
 
 
 
@@ -75,13 +79,13 @@ public class HomeFragment extends Fragment {
 int [] ThrillerImages;
 
 
-    public HomeFragment() {
+    public DocumentaryFragment() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        this.view=  inflater.inflate(R.layout.fragment_home, container, false);
+        this.view=  inflater.inflate(R.layout.fragment_documentary, container, false);
 
 
 
@@ -98,6 +102,7 @@ int [] ThrillerImages;
 
 
 
+/*
 
         ThrillerImages = new int[]{R.drawable.terminator,R.drawable.see,R.drawable.money_heist};
 
@@ -107,6 +112,7 @@ int [] ThrillerImages;
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             imageView.setImageResource(ThrillerImages[position]);
         });
+*/
 
 
 
@@ -116,6 +122,12 @@ int [] ThrillerImages;
     }
 
     private void initViews() {
+
+
+        this.recycler_view_documentary = view.findViewById(R.id.fragment_documentary_recycler_view);
+
+
+        /*
         this.recycler_view_home_music = view.findViewById(R.id.recycler_view_home_music);
         this.recycler_view_home_video = view.findViewById(R.id.recycler_view_home_video);
         this.recycler_view_home_news_local = view.findViewById(R.id.recycler_view_home_news);
@@ -125,6 +137,7 @@ int [] ThrillerImages;
         this.recycler_view_home_video_pickOfTheWeek = view.findViewById(R.id.recycler_view_home_video_pickOfTheWeek);
         this.recycler_view_home_news_international = view.findViewById(R.id.recycler_view_home_news_international);
 
+*/
 
 
 
@@ -134,10 +147,10 @@ int [] ThrillerImages;
             requestStoragePermission();
 
         }else{
-            fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated,"hometoprated");
+            /*fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated,"hometoprated");
             fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending,"hometrending");
             fetchVideoByPath(recycler_view_home_video,Paths.moviesTrending, Tag.home_trending);
-            fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek,Tag.homeBillboard);
+            fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek,Tag.homeBillboard);*/
         }
 
 
@@ -145,6 +158,7 @@ int [] ThrillerImages;
 
 
     }
+/*
 
     private void fetchMusic(){
         arrayMusic = new ArrayList<>();
@@ -202,6 +216,7 @@ int [] ThrillerImages;
         // recycler_view_series_fragment.setLayoutManager(gridLayoutManager);     }
 
     }
+*/
 
     /*private void fetchVideo(){
         arrayVideo = new ArrayList<>();
@@ -278,18 +293,24 @@ int [] ThrillerImages;
                 MediaStore.Video.Media.MIME_TYPE,
                 MediaStore.Video.Media.TITLE
                 ,MediaStore.Video.Media.DISPLAY_NAME,
-                MediaStore.Video.Media.DATA
+                MediaStore.Video.Media.DATA,
+                MediaStore.Video.Media.DATE_TAKEN
+
         };
         Cursor c = getActivity().getContentResolver().query(uri, projection,selection, selectionArgs, null);
 
         if (c != null) {
             while (c.moveToNext()) {
 
+                MetadataExtractor extractor = new MetadataExtractor();
+
                 Video videoModel = new Video();
                 String path = c.getString(6);
                 String videoDuration = c.getString(1);
                 String videoSize = c.getString(2);
                 String videoTitle = c.getString(5);
+                String videoDate = c.getString(7);
+
 
                 String vDuration = VideoHelper.timeConverter(Integer.parseInt(videoDuration));
                 String name = path.substring(path.lastIndexOf("/") + 1);
@@ -298,9 +319,9 @@ int [] ThrillerImages;
                 videoModel.setVideoName(videoName);
                 videoModel.setVideoPath(path);
                 videoModel.setVideoDuration(vDuration);
+                videoModel.setVideoDate(VideoHelper.years(Long.parseLong(videoDate)));
+
                 videoModel.setVideoGenre(videoSize);
-//                audioModel.setArtistSong(album);
-                //  audioModel.setArtistPath(path);
 
 
                 arrayVideo.add(videoModel);
@@ -315,7 +336,10 @@ int [] ThrillerImages;
             c.close();
         }
         movieAdapter = new MovieAdapter(getActivity(),arrayVideo,tag);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+
+
+      //  recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),6));
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -328,7 +352,7 @@ int [] ThrillerImages;
 
     }
 
-    private void fetchMusicByPath(RecyclerView recyclerView, String folderPath,String tag){
+    /*private void fetchMusicByPath(RecyclerView recyclerView, String folderPath,String tag){
 
         String selection = MediaStore.Audio.AudioColumns.DATA + " like ? ";
         String[] selectionArgs =new String [] {"%"+folderPath+"%"};
@@ -388,7 +412,7 @@ int [] ThrillerImages;
 
     }
 
-
+*/
 
 
 
@@ -399,17 +423,19 @@ int [] ThrillerImages;
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()){
-
+/*
                     fetchMusicByPath(recycler_view_home_music_hotVibes,Paths.musicHomeTopRated,"hometoprated");
                     fetchMusicByPath(recycler_view_home_music,Paths.musicHomeTrending,"hometrending");
 
                     fetchVideoByPath(recycler_view_home_video,Paths.moviesTrending,Tag.home_trending);
-                    fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek,Tag.homeBillboard);
+                    fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek,Tag.homeBillboard);*/
 /*
 
                     fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);
                     fetchVideoByPath(recycler_view_home_video_pickOfTheWeek,Paths.moviesPickOfTheWeek);
 */
+                fetchVideoByPath(recycler_view_documentary,Paths.moviesDocumentary,Tag.movies_Documentary);
+
 
                 }
                 if(report.isAnyPermissionPermanentlyDenied()){

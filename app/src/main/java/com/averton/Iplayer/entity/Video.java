@@ -1,6 +1,38 @@
 package com.averton.Iplayer.entity;
 
 public class Video {
+
+
+
+    private String videoName;
+    private String videoGenre;
+    private String videoPath;
+    private String videoDate;
+
+
+
+
+
+
+
+    public String getVideoDate() {
+        return videoDate;
+    }
+
+    public void setVideoDate(String videoDate) {
+        this.videoDate = videoDate;
+    }
+
+
+
+
+
+
+
+
+
+
+
     public String getVideoName() {
         return videoName;
     }
@@ -25,9 +57,6 @@ public class Video {
         this.videoPath = videoPath;
     }
 
-    private String videoName;
-    private String videoGenre;
-    private String videoPath;
 
     public String getVideoThumbNail() {
         return videoThumbNail;

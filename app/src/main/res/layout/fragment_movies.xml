@@ -7,11 +7,20 @@
     tools:context=".ui.fragments.MoviesFragment">
 <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Movies" android:textSize="40dp"
-              android:fontFamily="@font/roboto" android:layout_gravity="center_horizontal" android:textStyle="bold"
-    />
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_marginTop="8dp"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
+        android:layout_height="50dp" android:layout_marginLeft="8dp"/>
 
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" android:layout_marginTop="16dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Movies" android:textSize="40dp"
+              android:fontFamily="@font/nexa" android:layout_gravity="center_horizontal" android:textStyle="bold" android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" >
 
 
         <VideoView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer"
@@ -47,7 +56,7 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Trending" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
                     </LinearLayout>
@@ -68,7 +77,7 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Pick of the Week" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
 
@@ -93,7 +102,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Hollywood" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
@@ -118,7 +127,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                     >
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Nollywood" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                     </LinearLayout>
@@ -140,7 +149,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                   android:text="Bollywood" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
@@ -163,8 +172,8 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                   android:layout_marginTop="4dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
-                                  android:text="Documentary" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
+                                  android:text="Yoruba" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
@@ -181,6 +190,9 @@
 
         </RelativeLayout>
     </ScrollView>
+
+
+
 </LinearLayout>
 
 </FrameLayout>

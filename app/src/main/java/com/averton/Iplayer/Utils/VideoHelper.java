@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class VideoHelper {
 
@@ -53,7 +54,18 @@ public class VideoHelper {
 
     }
 
+    public static String years(long timeMs){
 
+        long days = TimeUnit.MILLISECONDS.toDays(timeMs);
+
+        long years = days/365;
+
+        final long date = 1970 + years ;
+
+        return String.valueOf(date) ;
+
+
+    }
 
 
 

@@ -34,7 +34,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.myViewHolder
     @Override
     public SportAdapter.myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_fragment_video, parent, false);
+                .inflate(R.layout.card_fragment_sport, parent, false);
         return  new myViewHolder(itemView);
     }
 
@@ -43,7 +43,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.myViewHolder
 
         Video video = videoList.get(position);
 
-        holder.videoGenre.setText(video.getVideoDuration());
+//        holder.videoGenre.setText(video.getVideoDuration());
         String imageName = video.getVideoName()+".jpg";
         String imagePath = Paths.imagesMovieThumbnail+"/"+imageName;
         final Bitmap b = BitmapFactory.decodeFile(imagePath);
@@ -62,9 +62,6 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.myViewHolder
 
 
             noClicks++;
-
-
-
 
             Intent intent = new Intent(mContext, ExoPlayerActivity.class );
             intent.putExtra("videoPath",video.getVideoPath());
@@ -94,9 +91,9 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.myViewHolder
 
         public myViewHolder(View itemView) {
             super(itemView);
-            videoTitle = itemView.findViewById(R.id.video_title);
-            videoGenre = itemView.findViewById(R.id.video_Genre);
-            thumbnail = itemView.findViewById(R.id.videoThumbnail);
+            //videoTitle = itemView.findViewById(R.id.video_year);
+//            videoGenre = itemView.findViewById(R.id.video_Genre);
+            thumbnail = itemView.findViewById(R.id.sportThumbnail);
         }
     }
 

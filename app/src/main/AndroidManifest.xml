@@ -58,7 +58,7 @@
 
         <activity
             android:name="com.averton.Iplayer.ui.activities.IntroActivity"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme" android:screenOrientation="landscape"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity
                 android:name="com.averton.Iplayer.ui.activities.MoviePlayerActivity"
@@ -68,7 +68,7 @@
 
         <activity
                 android:name="com.averton.Iplayer.ui.activities.MusicPlayerActivity"
-                android:theme="@style/Theme.Design.NoActionBar"
+                android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"
                 android:configChanges="orientation|screenSize|keyboardHidden"/>
 
 
@@ -77,7 +77,7 @@
 
         <activity
             android:name="com.averton.Iplayer.ui.activities.SplashActivity"
-            android:theme="@style/AppThemeActionDestils"
+            android:theme="@style/AppThemeActionDestils" android:screenOrientation="landscape"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -86,9 +86,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.averton.Iplayer.ui.activities.ReadNewsActivity" android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name="com.averton.Iplayer.ui.activities.ReadNewsActivity"
+            android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"/>
         <activity android:name="com.averton.Iplayer.ui.activities.HomeActivity"
-        android:theme="@style/Theme.Design.NoActionBar"/>
+        android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"/>
 
 
 
@@ -96,7 +97,8 @@
         <activity android:name="com.averton.Iplayer.ui.activities.ExoPlayerActivity"
                   android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"
                   android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name=".ui.activities.MovieDescActivity" android:theme="@style/Theme.Design.NoActionBar"/>
+        <activity android:name=".ui.activities.MovieDescActivity"
+            android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"/>
 
 
     </application>

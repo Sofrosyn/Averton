@@ -21,6 +21,8 @@ import com.averton.Iplayer.ui.Adapters.NewsAdapter;
 
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -194,5 +196,9 @@ public class NewsFragment extends Fragment {
 
     }
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        Toasty.info(getActivity(),"Scroll left for more ",Toasty.LENGTH_LONG).show();
+    }
 }

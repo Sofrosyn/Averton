@@ -3,14 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.HomeFragment">
+    tools:context=".ui.fragments.DocumentaryFragment">
 
 <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Home" android:textSize="40dp"
-              android:fontFamily="@font/roboto" android:layout_gravity="center_horizontal" android:textStyle="bold"
-    />
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_marginTop="8dp"
+        android:layout_height="wrap_content">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Documentary" android:textSize="40dp"
+              android:fontFamily="@font/nexa" android:layout_centerHorizontal="true" android:textStyle="bold" />
 
+        <ImageView
+            android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
+            android:layout_height="50dp" android:layout_marginLeft="8dp" android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <!--
     <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relative_container_thrillers" android:layout_marginTop="16dp">
 
 
@@ -21,17 +30,13 @@
 
     </RelativeLayout>
 
-
-
-
-
     <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"  android:scrollbars="vertical"  android:layout_marginBottom="8dp">
 
       <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 
 
 
-
+&lt;!&ndash;&ndash;&gt;
         <LinearLayout
                 android:id="@+id/relative_layout_popular_f"
                 android:layout_width="match_parent"
@@ -43,7 +48,7 @@
 
                 android:layout_marginTop="8dp">
 
-<!--Trending -->
+&lt;!&ndash;Trending &ndash;&gt;
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -55,7 +60,7 @@
 
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
                           android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-               <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
+               <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp"
                android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
             </LinearLayout>
 </LinearLayout>
@@ -67,9 +72,9 @@
 
             </LinearLayout>
 
-<!--End Trending Movie-->
+&lt;!&ndash;End Trending Movie&ndash;&gt;
 
-            <!--Pick of the Week-->
+            &lt;!&ndash;Pick of the Week&ndash;&gt;
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -81,7 +86,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Movies_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp" android:textAlignment="center"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MOVIES" android:textSize="12dp"
                                   android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -92,10 +97,10 @@
                        />
 
             </LinearLayout>
-<!--End Pick of the Week-->
+&lt;!&ndash;End Pick of the Week&ndash;&gt;
 
 
-          <!--Bill board 100-->
+          &lt;!&ndash;Bill board 100&ndash;&gt;
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -110,7 +115,7 @@
 
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
                               android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp" android:textAlignment="center"
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp"
                               android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                 </LinearLayout>
             </LinearLayout>
@@ -120,11 +125,11 @@
                 android:layout_height="wrap_content"
             />
         </LinearLayout>
-            <!--End Bill board 100-->
+            &lt;!&ndash;End Bill board 100&ndash;&gt;
 
 
 
-            <!--Hottest Vibes 100-->
+            &lt;!&ndash;Hottest Vibes 100&ndash;&gt;
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -139,7 +144,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="Music_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp" android:textAlignment="center"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MUSIC" android:textSize="12dp"
                                   android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -149,9 +154,9 @@
                         android:layout_height="wrap_content"
                 />
             </LinearLayout>
-            <!--End Hottest Vibes 100-->
+            &lt;!&ndash;End Hottest Vibes 100&ndash;&gt;
 
-<!--Local news-->
+&lt;!&ndash;Local news&ndash;&gt;
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -166,7 +171,7 @@
 
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
                               android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp" android:textAlignment="center"
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp"
                               android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                 </LinearLayout>
 
@@ -177,9 +182,9 @@
                 android:layout_height="wrap_content"
         />
         </LinearLayout>
-<!--End Local News-->
+&lt;!&ndash;End Local News&ndash;&gt;
 
-            <!--international news-->
+            &lt;!&ndash;international news&ndash;&gt;
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -194,7 +199,7 @@
 
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"  android:tag="News_tag"  android:layout_marginLeft="8dp"
                                   android:background="@color/red" android:orientation="horizontal" android:layout_gravity="center">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp" android:textAlignment="center"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="News" android:textSize="12dp"
                                   android:textColor="@color/white"  android:layout_margin="2dp" android:fontFamily="@font/averton"/>
                     </LinearLayout>
 
@@ -205,15 +210,25 @@
                         android:layout_height="wrap_content"
                 />
             </LinearLayout>
-            <!--End International News-->
+            &lt;!&ndash;End International News&ndash;&gt;
 
 
 
         </LinearLayout>
 
+
+
+
       </RelativeLayout>
 
     </ScrollView>
+
+    -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent" android:layout_marginTop="8dp" android:layout_marginLeft="16dp"
+        android:layout_height="wrap_content" android:id="@+id/fragment_documentary_recycler_view"/>
+
 
 </LinearLayout>
 </FrameLayout>

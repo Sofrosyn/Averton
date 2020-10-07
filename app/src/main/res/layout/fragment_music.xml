@@ -7,10 +7,20 @@
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Music" android:textSize="40dp"
-                  android:fontFamily="@font/roboto" android:layout_gravity="center_horizontal" android:textStyle="bold"
-        />
-        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"  android:scrollbars="vertical" android:layout_marginTop="16dp">
+                  android:fontFamily="@font/nexa" android:layout_centerHorizontal="true" android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
+                    android:layout_height="50dp" android:layout_marginLeft="8dp"/>
+
+
+
+            </RelativeLayout>
+
+        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"  android:scrollbars="vertical" android:layout_marginTop="8dp">
 
             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" >
 
@@ -35,7 +45,7 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                       android:text="Trending" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
                         </LinearLayout>
@@ -56,7 +66,7 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                       android:text="Top rated" android:textStyle="bold" android:textSize="@dimen/movie_title" />
 
 
@@ -81,7 +91,7 @@
 
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                         >
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                       android:text="Billboards" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
@@ -106,7 +116,7 @@
 
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                         >
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                       android:text="Afro Beats" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                         </LinearLayout>
@@ -127,7 +137,7 @@
 
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                       android:layout_marginTop="4dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                       android:text="Soul" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
 
@@ -150,7 +160,7 @@
 
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                       android:layout_marginTop="4dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                       android:text="RnB" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                         </LinearLayout>
@@ -173,7 +183,7 @@
 
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                                       android:layout_marginTop="4dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/roboto"
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
                                       android:text="Hip Hop" android:textStyle="bold" android:textSize="@dimen/movie_title"  />
 
                         </LinearLayout>

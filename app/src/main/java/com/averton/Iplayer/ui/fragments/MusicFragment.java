@@ -236,5 +236,9 @@ public class MusicFragment extends Fragment {
 
         }
 
+        Toasty.info(getActivity(),"Scroll left for more music",Toasty.LENGTH_LONG).show();
+
     }
+
+
 }
