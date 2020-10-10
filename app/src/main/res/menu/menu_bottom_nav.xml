@@ -2,33 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 <item android:id="@+id/nav_home"
       android:title="Documentary"
-      android:icon="@drawable/icons8_documentary_48"
+
       android:orderInCategory="2"
       app:showAsAction="always"
         />
 
     <item android:id="@+id/nav_movies"
           android:title="Movies"
-          android:icon="@drawable/icons8_cinema_48"
+
           android:orderInCategory="1"
           app:showAsAction="always"
     />
     <item android:id="@+id/nav_music"
           android:title="Music"
-          android:icon="@drawable/icons8_music_48"
+
           android:orderInCategory="3"
           app:showAsAction="always"
 
     />
     <item android:id="@+id/nav_sport"
           android:title="Sport"
-          android:icon="@drawable/icons8_soccer_player_48"
+
           android:orderInCategory="4"
           app:showAsAction="always"
     />
     <item android:id="@+id/nav_news"
           android:title="More"
-          android:icon="@drawable/ic_apps"
+
           android:orderInCategory="5"
           app:showAsAction="always"
     />

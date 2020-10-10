@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +84,7 @@ public class SportsFragment extends Fragment {
 
     private void initView() {
 
-
+        videoHelper = new VideoHelper();
         this.recycler_view_sport_trending = view.findViewById(R.id.recycler_view_sport_trending);
         this.recycler_view_sport_pickOfTheWeek = view.findViewById(R.id.recycler_view_sport_pickOfTheWeek);
         this.recycler_view_sport_africa = view.findViewById(R.id.recycler_view_sport_africa);
@@ -253,7 +254,7 @@ stopPlayer();
         super.onStart();
         playThriller();
 
-        Toasty.info(getActivity(),"Scroll left for more sport videos",Toasty.LENGTH_LONG).show();
+        videoHelper.toastMessage(getActivity(),"Scroll left for more sports videos");
     }
 
 

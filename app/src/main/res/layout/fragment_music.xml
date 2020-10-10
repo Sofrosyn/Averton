@@ -14,7 +14,7 @@
 
                 <ImageView
                     android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
-                    android:layout_height="50dp" android:layout_marginLeft="8dp"/>
+                    android:layout_height="50dp" android:layout_marginLeft="8dp" android:visibility="gone"/>
 
 
 

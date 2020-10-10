@@ -62,8 +62,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.viewHolder> {
         extractor = new MetadataExtractor();
         holder.headline.setText(news.getNewsHeadline());
 
-        RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.news_thumbnail).dontAnimate().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .error(R.drawable.news_thumbnail).fitCenter();
+        RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.book_cover).dontAnimate().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .error(R.drawable.book_cover).fitCenter();
 
         Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(news.getNewsPath()).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(holder.circleImageView);
 

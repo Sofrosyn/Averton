@@ -5,28 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+
     tools:context=".ui.activities.SplashActivity">
+    <FrameLayout
+        android:layout_width="match_parent" android:background="@color/black"
+        android:layout_height="match_parent">
     <ImageView
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/logo"
-        android:layout_width="170dp"
 
-        android:layout_height="170dp" />
-    <com.greenfrvr.rubberloader.RubberLoaderView
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/loader1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:loaderExtraColor="@color/blue"
-        app:loaderPrimeColor="@color/colorPrimaryDark"
-        app:loaderSize="normal"
-        android:layout_weight="1"
-        app:loaderRippleColor="@color/gray"
-        app:loaderRippleMode="reverse"/>
+        android:layout_width="match_parent" android:alpha="0.6"
+            android:id="@+id/splash_images" android:scaleType="fitXY"
+        android:layout_height="match_parent" />
+    </FrameLayout>
 
+    <ImageView
+        android:layout_width="match_parent" android:layout_centerInParent="true"
+        android:layout_height="wrap_content" android:src="@drawable/logo"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp" app:cardCornerRadius="8dp" android:layout_alignParentBottom="true" app:cardBackgroundColor="@android:color/holo_orange_dark"
+        android:layout_height="76dp" android:layout_centerHorizontal="true" android:layout_marginBottom="16dp" android:id="@+id/enterButton">
+
+        <TextView
+            android:layout_width="wrap_content" android:text="Enter-tainment" android:textColor="@android:color/white" android:fontFamily="@font/averton"
+            android:layout_height="wrap_content" android:layout_gravity="center" android:textSize="18sp" android:textStyle="bold"/>
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

@@ -6,9 +6,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.Settings;
+import android.view.Gravity;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.averton.Iplayer.entity.Analytics;
+
+import es.dmoral.toasty.Toasty;
 import io.paperdb.Paper;
 
 import java.io.File;
@@ -113,4 +118,17 @@ public void writeToFile(Analytics analytic,String data) {
         Path path = Files.write(file.getPath(),);
     }catch (IOException e){e.getMessage();}
 }*/
+
+
+        public void toastMessage(Context context, String message){
+
+            Toast toast= Toast.makeText(context,
+                    message, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
+
+        }
+
+
+
 }

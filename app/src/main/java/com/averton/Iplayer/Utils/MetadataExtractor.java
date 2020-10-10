@@ -31,18 +31,11 @@ public class MetadataExtractor {
 
     public String yearCreated(String path){
         String year = "";
-        metadataRetriever = new MediaMetadataRetriever();
+       MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         metadataRetriever.setDataSource(path);
+        return   metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DATE);
 
-        try {
 
-           year = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-
-        }catch (Exception e){
-            e.getMessage();
-
-        }
-        return year;
     }
 
 

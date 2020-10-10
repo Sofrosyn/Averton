@@ -16,7 +16,7 @@
     <application
         android:name="com.averton.Iplayer.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/averton_logo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
@@ -50,11 +50,6 @@
 
 
         </receiver>
-        
-        
-        
-        
-
 
         <activity
             android:name="com.averton.Iplayer.ui.activities.IntroActivity"

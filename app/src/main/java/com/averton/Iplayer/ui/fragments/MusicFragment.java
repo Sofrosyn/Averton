@@ -31,6 +31,7 @@ import com.averton.Iplayer.entity.Music;
 import com.averton.Iplayer.ui.Adapters.MusicAdapter;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -235,9 +236,7 @@ public class MusicFragment extends Fragment {
             fetchMusicByPath(recycler_view_music_topRated, Paths.musicAfricaTopRated,Tag.TopRated);
 
         }
-
-        Toasty.info(getActivity(),"Scroll left for more music",Toasty.LENGTH_LONG).show();
-
+        videoHelper.toastMessage(getActivity(),"Scroll left for more music");
     }
 
 

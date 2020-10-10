@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.widget.*;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -96,7 +97,7 @@ public class MoviesFragment extends Fragment {
 
     private void initView() {
 
-
+        videoHelper = new VideoHelper();
         this.recycler_view_movies_trending = view.findViewById(R.id.recycler_view_movies_trending);
         this.recycler_view_movies_pickOfTheWeek = view.findViewById(R.id.recycler_view_movies_pickOfTheWeek);
         this.recycler_view_movies_documentary = view.findViewById(R.id.recycler_view_movies_documentary);
@@ -240,7 +241,7 @@ public class MoviesFragment extends Fragment {
 
         playThriller();
 
-        Toasty.info(getActivity(),"Scroll left for more movies",Toasty.LENGTH_LONG).show();
+        videoHelper.toastMessage(getActivity(),"Scroll left for more movies");
         }
 
     @Override

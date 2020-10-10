@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.Paths;
+import com.averton.Iplayer.Utils.VideoHelper;
 import com.averton.Iplayer.entity.News;
 import com.averton.Iplayer.ui.Adapters.NewsAdapter;
 
@@ -38,7 +40,7 @@ public class NewsFragment extends Fragment {
     private RecyclerView recycler_view_news_fashion_magazine;
     private RecyclerView recycler_view_news_business_weekly;
     private RecyclerView recycler_view_news_books;
-
+    private VideoHelper videoHelper;
 
 
 
@@ -59,7 +61,7 @@ public class NewsFragment extends Fragment {
 
     private void initView() {
 
-
+        videoHelper = new VideoHelper();
         recycler_view_news_international = view.findViewById(R.id.recycler_view_news_international);
         recycler_view_news_local = view.findViewById(R.id.recycler_view_news_local);
         recycler_view_news_books = view.findViewById(R.id.recycler_view_news_books);
@@ -199,6 +201,5 @@ public class NewsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Toasty.info(getActivity(),"Scroll left for more ",Toasty.LENGTH_LONG).show();
-    }
+        videoHelper.toastMessage(getActivity(),"Scroll left for more books");  }
 }

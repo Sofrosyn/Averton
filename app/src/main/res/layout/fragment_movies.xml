@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
     <ImageView
         android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
-        android:layout_height="50dp" android:layout_marginLeft="8dp"/>
+        android:layout_height="50dp" android:layout_marginLeft="8dp" android:visibility="gone"/>
 
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Movies" android:textSize="40dp"
               android:fontFamily="@font/nexa" android:layout_gravity="center_horizontal" android:textStyle="bold" android:layout_centerHorizontal="true"/>
@@ -25,7 +25,7 @@
 
         <VideoView android:layout_width="match_parent" android:layout_height="400dp" android:contentDescription="thriller layer"
                    android:id="@+id/video_Thriller" android:layout_centerHorizontal="true"  android:layout_alignParentRight="true"
-                   android:layout_alignParentLeft="true" />
+                   android:layout_alignParentLeft="true" android:visibility="gone" />
 
 
     </RelativeLayout>

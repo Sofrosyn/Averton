@@ -1,0 +1,123 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.GamesFragment">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent" android:layout_marginTop="8dp"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Games" android:textSize="40dp"
+                android:fontFamily="@font/nexa" android:layout_centerHorizontal="true" android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter" android:visibility="gone"
+                android:layout_height="50dp" android:layout_marginLeft="8dp" android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent" android:rowCount="2" android:columnCount="6"
+        android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_marginLeft="16dp">
+
+
+
+        <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="match_parent" app:cardElevation="4dp" app:cardBackgroundColor="@color/gray"
+            android:id="@+id/play_fruitNinja" android:layout_marginLeft="8dp"  >
+
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="200dp" android:layout_height="200dp" android:src="@drawable/fruit_ninja" android:scaleType="fitXY"
+                    android:id="@+id/image_ninja"
+                    />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
+                    android:layout_below="@+id/image_ninja"  android:layout_marginTop="8dp" android:layout_centerHorizontal="true" >
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"  android:text="Fruit Ninja"
+                        android:fontFamily="@font/roboto" android:textStyle="bold" android:textSize="18dp" android:textColor="@color/white"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"  android:text="description"
+                        android:fontFamily="@font/roboto"  android:textSize="15dp" android:textColor="@color/white" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="match_parent" app:cardElevation="4dp" app:cardBackgroundColor="@color/gray"
+            android:id="@+id/play_Chess"  android:layout_marginLeft="8dp">
+
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="200dp" android:layout_height="200dp" android:src="@drawable/chess" android:scaleType="fitXY"
+                    android:id="@+id/images_chess"
+                    />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
+                    android:layout_below="@id/images_chess"  android:layout_marginTop="8dp" android:layout_centerHorizontal="true" >
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"  android:text="Chess"
+                        android:fontFamily="@font/roboto" android:textStyle="bold" android:textSize="18dp" android:textColor="@color/white"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"  android:text="description"
+                        android:fontFamily="@font/roboto"  android:textSize="15dp" android:textColor="@color/white" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="match_parent" app:cardElevation="4dp" app:cardBackgroundColor="@color/gray"
+            android:id="@+id/play_whot"  android:layout_marginLeft="8dp">
+
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="200dp" android:layout_height="200dp" android:src="@drawable/whot" android:scaleType="fitXY"
+                    android:id="@+id/whot"
+                    />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
+                    android:layout_below="@id/whot"  android:layout_marginTop="8dp" android:layout_centerHorizontal="true" >
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/WHot" android:text="Whot"
+                        android:fontFamily="@font/roboto" android:textStyle="bold" android:textSize="18dp" android:textColor="@color/white"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/news_description" android:text="description"
+                        android:fontFamily="@font/roboto"  android:textSize="15dp" android:textColor="@color/white" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+        <androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="match_parent" app:cardElevation="4dp" app:cardBackgroundColor="@color/gray"
+            android:id="@+id/play_candyCrush" android:layout_marginLeft="8dp" >
+
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="200dp" android:layout_height="200dp" android:src="@drawable/candy_crush" android:scaleType="fitXY"
+                    android:id="@+id/candyCrush"
+                    />
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"
+                    android:layout_below="@id/candyCrush"  android:layout_marginTop="8dp" android:layout_centerHorizontal="true" >
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"  android:text="Candy Crush"
+                        android:fontFamily="@font/roboto" android:textStyle="bold" android:textSize="18dp" android:textColor="@color/white"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="description"
+                        android:fontFamily="@font/roboto"  android:textSize="15dp" android:textColor="@color/white" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+    </GridLayout>
+
+    </LinearLayout>
+</FrameLayout>

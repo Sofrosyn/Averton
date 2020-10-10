@@ -14,7 +14,7 @@
               android:fontFamily="@font/nexa" android:layout_centerHorizontal="true" android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
+            android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter" android:visibility="gone"
             android:layout_height="50dp" android:layout_marginLeft="8dp" android:layout_centerVertical="true"/>
 
     </RelativeLayout>
@@ -226,7 +226,7 @@
     -->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent" android:layout_marginTop="8dp" android:layout_marginLeft="16dp"
+        android:layout_width="match_parent" android:layout_marginTop="8dp"
         android:layout_height="wrap_content" android:id="@+id/fragment_documentary_recycler_view"/>
 
 

@@ -1,11 +1,16 @@
 package com.averton.Iplayer.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.averton.Iplayer.Utils.Paths;
+import com.bumptech.glide.Glide;
 import com.orhanobut.hawk.Hawk;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 
 
 import com.greenfrvr.rubberloader.RubberLoaderView;
@@ -19,68 +24,67 @@ import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private PrefManager prf;
-    private File file;
+
+    private CardView enter;
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Hawk.init(this).build();
 
-
-        prf= new PrefManager(getApplicationContext());
-    try {
-    if(!file.exists()){
-        file = new File(Paths.analytics);
-    }
-
-        }catch(Exception e){
-    e.getMessage();
-            }
+        enter = findViewById(R.id.enterButton);
+        imageView = findViewById(R.id.splash_images);
 
 
 
-        ( (RubberLoaderView) findViewById(R.id.loader1)).startLoading();
+        Glide.with(this).asGif().load(R.drawable.animate).into(imageView);
 
 
-
-
-        Timer myTimer = new Timer();
-        myTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                // If you want to modify a view in your Activity
-                SplashActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-
-
-        if (!prf.getString("first").equals("true")){
-            Intent intent = new Intent(SplashActivity.this,HomeActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.enter, R.anim.exit);
-            finish();
-            prf.setString("first","true");
-        }else{
-            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.enter, R.anim.exit);
-            finish();
-        }
-
-
-
-                    }
-                });
-            }
-        }, 300);
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        enter.setOnClickListener(v -> {
+            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+            finish();
 
-
-
-
+        });
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

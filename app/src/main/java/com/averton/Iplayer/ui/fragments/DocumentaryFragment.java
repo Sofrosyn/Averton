@@ -457,46 +457,6 @@ int [] ThrillerImages;
         }).onSameThread().check();
     }//[end request permissions]
 
-    private void thrillerImages() {
-
-     carouselArray = new ArrayList<>();
-        String selection = MediaStore.Images.Media.DATA + " like ? ";
-        String[] selectionArgs =new String [] {"%"+"/storage/emulated/0/AVERTON/thumbnail/"+"%"};
-
-
-        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-        String[] projection = {
-                MediaStore.Images.Media.DATA
-        };
-        Cursor c = getActivity().getContentResolver().query(uri, projection,selection, selectionArgs,   MediaStore.Files.FileColumns.DATE_ADDED + " ASC");
-
-        if (c != null) {
-            while (c.moveToNext()) {
-
-
-                String path = c.getString(0);
-
-
-               carouselArray.add(path);
-
-            }
-
-            c.close();
-
-
-        }
-
-        carouselView.setPageCount(carouselArray.size());
-
-        carouselView.setImageListener((position, imageView) -> {
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            imageView.setImageURI(Uri.parse(carouselArray.get(position)));
-
-            Log.v("thriller Image",carouselArray.get(position));
-        });
-
-    }
-
 
 
 
