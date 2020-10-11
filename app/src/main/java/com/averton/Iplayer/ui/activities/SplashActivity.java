@@ -26,18 +26,13 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private CardView enter;
-    private ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
         enter = findViewById(R.id.enterButton);
-        imageView = findViewById(R.id.splash_images);
-
-
-
-        Glide.with(this).asGif().load(R.drawable.animate).into(imageView);
 
 
     }
