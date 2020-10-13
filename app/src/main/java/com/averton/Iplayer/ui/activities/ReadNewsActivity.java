@@ -2,14 +2,17 @@ package com.averton.Iplayer.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.averton.Iplayer.R;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
-import com.averton.Iplayer.R;
-import timber.log.Timber;
 
 import java.io.File;
+
+import timber.log.Timber;
 
 public class ReadNewsActivity extends AppCompatActivity {
 

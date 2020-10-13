@@ -8,16 +8,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import com.averton.Iplayer.R;
-import com.averton.Iplayer.ui.fragments.*;
+import com.averton.Iplayer.ui.fragments.DocumentaryFragment;
+import com.averton.Iplayer.ui.fragments.GamesFragment;
+import com.averton.Iplayer.ui.fragments.MoviesFragment;
+import com.averton.Iplayer.ui.fragments.MusicFragment;
+import com.averton.Iplayer.ui.fragments.NewsFragment;
+import com.averton.Iplayer.ui.fragments.SportsFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
     private Fragment fragment = null;
     private FragmentTransaction transaction;
     private FrameLayout container;
-    private BottomNavigationView bottomNavigationView;
 
     private ImageButton movies;
     private ImageButton documentary;
@@ -35,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-     //   bottomNavigationView = findViewById(R.id.bottom_nav_home);
+
         container = findViewById(R.id.home_activity_framelayout);
 
         movies = findViewById(R.id.home_activity_movies);
@@ -55,29 +59,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        /*bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.nav_home:
-                    switchFragment(new DocumentaryFragment());
-                    return true;
-
-                case R.id.nav_movies:
-                    switchFragment(new MoviesFragment());
-                    return true;
-                case R.id.nav_music:
-                    switchFragment(new MusicFragment());
-                    return true;
-
-                case R.id.nav_sport:
-                    switchFragment(new SportsFragment());
-                    return true;
-                case R.id.nav_news:
-                    switchFragment(new NewsFragment());
-                    return true;
-
-            }
-            return false;
-        });*/
 
 
 

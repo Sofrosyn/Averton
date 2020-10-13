@@ -115,7 +115,7 @@
                             android:layout_weight="1"
                             android:layout_marginTop="4dp"
                             android:orientation="vertical">
-                        <!--TODO: rename recycler views-->
+
 
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"
                         >

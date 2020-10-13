@@ -100,5 +100,7 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.5'
     implementation 'com.swipper.library:library:0.1.1'
     implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+    implementation 'com.github.barteksc:pdfium-android:1.9.0'
+
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }

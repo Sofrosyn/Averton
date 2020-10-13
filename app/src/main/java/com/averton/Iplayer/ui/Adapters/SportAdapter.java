@@ -9,23 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.averton.Iplayer.ui.activities.ExoPlayerActivity;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.Paths;
 import com.averton.Iplayer.entity.Video;
-import com.averton.Iplayer.ui.activities.MoviePlayerActivity;
+import com.averton.Iplayer.ui.activities.ExoPlayerActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class SportAdapter extends RecyclerView.Adapter<SportAdapter.myViewHolder> {
 
-    private Context mContext;
-    private ArrayList<Video> videoList;
+    private final Context mContext;
+    private final ArrayList<Video> videoList;
     private int noClicks=0;
 
     private final int maxItems = 10;
@@ -86,7 +88,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.myViewHolder
 
     public class myViewHolder extends RecyclerView.ViewHolder {
         public TextView videoTitle, videoGenre;
-        public ImageView thumbnail;
+        public final ImageView thumbnail;
 
 
         public myViewHolder(View itemView) {

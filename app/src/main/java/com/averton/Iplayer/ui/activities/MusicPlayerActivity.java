@@ -2,69 +2,51 @@ package com.averton.Iplayer.ui.activities;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.net.Uri;
-import android.os.Handler;
-
-import android.os.Bundle;
-import android.util.Log;
-
-
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.averton.Iplayer.R;
+import com.averton.Iplayer.Utils.MetadataExtractor;
+import com.averton.Iplayer.Utils.Paths;
+import com.averton.Iplayer.Utils.VideoHelper;
 import com.averton.Iplayer.entity.Analytics;
+import com.averton.Iplayer.entity.Music;
+import com.averton.Iplayer.ui.Adapters.PlaylistAdapter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-
 import com.google.android.exoplayer2.SimpleExoPlayer;
-
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
-
 import com.google.android.exoplayer2.upstream.FileDataSource;
-
-import com.averton.Iplayer.R;
-import com.averton.Iplayer.Utils.MetadataExtractor;
-
-import com.averton.Iplayer.Utils.Paths;
-import com.averton.Iplayer.Utils.VideoHelper;
-import com.averton.Iplayer.entity.Music;
-
-import com.averton.Iplayer.ui.Adapters.PlaylistAdapter;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import es.dmoral.toasty.Toasty;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class MusicPlayerActivity extends AppCompatActivity {
@@ -72,7 +54,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
 
     private SimpleExoPlayer exoPlayer;
-    private ExoPlayer.EventListener eventListener = new ExoPlayer.EventListener() {
+    private final ExoPlayer.EventListener eventListener = new ExoPlayer.EventListener() {
 
         @Override
         public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
@@ -435,29 +417,5 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-       /* analytics.setMediaName(songName);
-        analytics.setMediaType("Music");
-        analytics.setClickCount(clicks);
-        Map<String,Analytics> map = new HashMap<>();
 
-
-
-        db.collection("Music").add(analytics).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                e.printStackTrace();
-            }
-        });
-*/
-
-    }
 }

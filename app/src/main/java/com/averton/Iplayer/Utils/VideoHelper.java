@@ -124,7 +124,7 @@ public void writeToFile(Analytics analytic,String data) {
 
             Toast toast= Toast.makeText(context,
                     message, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
             toast.show();
 
         }

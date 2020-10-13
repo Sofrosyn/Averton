@@ -51,10 +51,7 @@
 
         </receiver>
 
-        <activity
-            android:name="com.averton.Iplayer.ui.activities.IntroActivity"
-            android:theme="@style/AppTheme" android:screenOrientation="landscape"
-            android:configChanges="orientation|screenSize|keyboardHidden"/>
+
         <activity
                 android:name="com.averton.Iplayer.ui.activities.MoviePlayerActivity"
                 android:theme="@style/AppThemeNoAction"

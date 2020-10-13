@@ -6,15 +6,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.Paths;
 import com.averton.Iplayer.Utils.VideoHelper;
@@ -22,8 +23,6 @@ import com.averton.Iplayer.entity.News;
 import com.averton.Iplayer.ui.Adapters.NewsAdapter;
 
 import java.util.ArrayList;
-
-import es.dmoral.toasty.Toasty;
 
 
 /**
@@ -105,6 +104,7 @@ public class NewsFragment extends Fragment {
                 String dName = name.substring(0,name.lastIndexOf(".pdf")+1);
                 news.setNewsHeadline(dName);
                 news.setNewsPath(path);
+
 
                 Log.v(" News Name :%s",dName);
                 Log.v(" News path :%s",path);

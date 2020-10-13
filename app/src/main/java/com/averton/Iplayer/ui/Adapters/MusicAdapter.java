@@ -8,30 +8,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
+
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.MetadataExtractor;
 import com.averton.Iplayer.entity.Music;
 import com.averton.Iplayer.ui.activities.MusicPlayerActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder> {
 
-    private Context mContext;
+    private final Context mContext;
 
-    public ArrayList<Music> albumList;
+    public final ArrayList<Music> albumList;
 
     private MetadataExtractor extractor;
-    private String tag;
+    private final String tag;
     int noClicks = 0;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, artist;
-        public ImageView thumbnail, overflow;
+        public final TextView title;
+        public final TextView artist;
+        public final ImageView thumbnail;
+        public ImageView overflow;
 
         public MyViewHolder(View view) {
             super(view);
@@ -73,7 +77,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
 
 
 
-        Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(extractor.getCoverArt(album.getArtistPath())).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).into(holder.thumbnail);
+        Glide.with(mContext).setDefaultRequestOptions(requestOptions).asBitmap().load(extractor.getCoverArt(album.getArtistPath())).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(holder.thumbnail);
 
         holder.thumbnail.setOnClickListener(v -> {
             noClicks++;

@@ -10,8 +10,8 @@
 
 
 
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="match_parent" app:layout_constraintLeft_toRightOf="@+id/linear_layout_next"
-app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="100dp"
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" app:layout_constraintLeft_toRightOf="@+id/linear_layout_next"
+ android:layout_marginLeft="100dp"
     android:id="@+id/home_activity_framelayout" />
 
     <!--<com.google.android.material.bottomnavigation.BottomNavigationView android:layout_width="match_parent" app:menu="@menu/menu_bottom_nav" app:layout_constraintLeft_toLeftOf="parent"

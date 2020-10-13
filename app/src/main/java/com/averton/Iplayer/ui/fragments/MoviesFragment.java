@@ -6,36 +6,32 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.provider.MediaStore;
-import android.view.Gravity;
-import android.widget.*;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.VideoView;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.averton.Iplayer.R;
+import com.averton.Iplayer.Utils.Paths;
 import com.averton.Iplayer.Utils.Tag;
+import com.averton.Iplayer.Utils.VideoHelper;
+import com.averton.Iplayer.entity.Video;
+import com.averton.Iplayer.ui.Adapters.MovieAdapter;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.averton.Iplayer.Utils.Paths;
-import com.averton.Iplayer.Utils.VideoHelper;
-import com.averton.Iplayer.entity.Video;
-import com.averton.Iplayer.ui.Adapters.MovieAdapter;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.averton.Iplayer.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import es.dmoral.toasty.Toasty;
 
 
 /**
@@ -47,7 +43,7 @@ public class MoviesFragment extends Fragment {
     private View view;
 
 
-    private String thriller = "file://"+"/mnt/extSdCard/AVERTON/Thriller/movie.mp4";
+    private final String thriller = "file://"+"/mnt/extSdCard/AVERTON/Thriller/movie.mp4";
 
     private RecyclerView recycler_view_movies_trending;
     private RecyclerView recycler_view_movies_pickOfTheWeek;
@@ -84,16 +80,13 @@ public class MoviesFragment extends Fragment {
         view =  inflater.inflate(R.layout.fragment_movies, container, false);
 
         initView();
-        initActon();
+
 
         return view;
     }
 
 
 
-    private void initActon() {
-
-    }
 
     private void initView() {
 

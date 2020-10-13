@@ -1,26 +1,13 @@
 package com.averton.Iplayer.ui.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.averton.Iplayer.Utils.Paths;
-import com.bumptech.glide.Glide;
-import com.orhanobut.hawk.Hawk;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageView;
-
-
-import com.greenfrvr.rubberloader.RubberLoaderView;
-import com.averton.Iplayer.Provider.PrefManager;
 import com.averton.Iplayer.R;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -30,6 +17,15 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        View decorView = getWindow().getDecorView();
+
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+
+
+
         setContentView(R.layout.activity_splash);
 
         enter = findViewById(R.id.enterButton);

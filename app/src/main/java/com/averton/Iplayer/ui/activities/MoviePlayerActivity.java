@@ -4,17 +4,16 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.*;
-import com.swipper.library.Swipper;
+import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
+
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.VideoHelper;
 import com.averton.Iplayer.entity.Analytics;
-import io.paperdb.Paper;
-
-import java.util.ArrayList;
+import com.swipper.library.Swipper;
 
 /*
 */
@@ -78,9 +77,7 @@ public class MoviePlayerActivity extends Swipper {
     @Override
     protected void onStart() {
         super.onStart();
-     if(activity ==2){initializePlayer(videoPath);}
-        // Load the media each time onStart() is called.
-
+     initializePlayer(videoPath);
     }
 
     @Override

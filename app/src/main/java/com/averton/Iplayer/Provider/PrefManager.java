@@ -10,12 +10,12 @@ import android.content.SharedPreferences;
 
 public class PrefManager {
 
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
-    Context _context;
+    final SharedPreferences pref;
+    final SharedPreferences.Editor editor;
+    final Context _context;
 
     // shared pref mode
-    int PRIVATE_MODE = 0;
+    final int PRIVATE_MODE = 0;
 
     // Shared preferences file name
     private static final String PREF_NAME = "status_app";

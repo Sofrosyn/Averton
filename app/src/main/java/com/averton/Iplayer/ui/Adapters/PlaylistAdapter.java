@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.entity.Music;
 import com.averton.Iplayer.ui.activities.ExoPlayerActivity;
@@ -17,8 +19,8 @@ import com.averton.Iplayer.ui.activities.ExoPlayerActivity;
 import java.util.ArrayList;
 
 public class PlaylistAdapter  extends RecyclerView.Adapter<PlaylistAdapter.myViewHolder> {
-    Context context;
-    ArrayList<Music> playlist;
+    final Context context;
+    final ArrayList<Music> playlist;
 
 
 
@@ -65,8 +67,9 @@ public class PlaylistAdapter  extends RecyclerView.Adapter<PlaylistAdapter.myVie
    /*inner class*/
 
     public class myViewHolder extends RecyclerView.ViewHolder{
-        public TextView songName, artist;
-        public LinearLayout playItem;
+        public final TextView songName;
+        public final TextView artist;
+        public final LinearLayout playItem;
 
 
 

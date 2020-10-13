@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.MetadataExtractor;
 import com.averton.Iplayer.Utils.Paths;
@@ -36,10 +37,6 @@ public class MovieDescActivity extends AppCompatActivity {
     private TextView descriptions;
     private ImageView descImage;
     private RecyclerView moviesRelatedVideos;
- /*   private RecyclerView moviesComedy;
-    private RecyclerView moviesAction;
-    private RecyclerView moviesTragedy;
-    private RecyclerView moviesRomance;*/
     private Toolbar toolbar;
     private Intent intent;
     private ArrayList<Video> arrayVideo;
@@ -60,15 +57,11 @@ public class MovieDescActivity extends AppCompatActivity {
         playButton = findViewById(R.id.movieDescPlayButton);
         descriptions = findViewById(R.id.movie_description_text);
         descImage = findViewById(R.id.movie_description_image);
-    //        moviesComedy = findViewById(R.id.recycler_view_movies_desc_comedy);
+
         moviesRelatedVideos = findViewById(R.id.recycler_view_movies_desc_related);
 
 
 
-        /*   moviesTragedy = findViewById(R.id.recycler_view_movies_desc_Tragedy);
-        moviesAction = findViewById(R.id.recycler_view_movies_desc_action);
-        moviesRomance = findViewById(R.id.recycler_view_movies_desc_romance);
-*/
     }
 
     @Override
@@ -81,7 +74,6 @@ public class MovieDescActivity extends AppCompatActivity {
         if (intent != null) {
                 videoPath = intent.getStringExtra("videoPath");
             String videoName = intent.getStringExtra("videoName");
- //           int noClick = intent.getIntExtra("noClicks",0);
             String tag = intent.getStringExtra("tag");
             MetadataExtractor extractor = new MetadataExtractor();
 
@@ -94,68 +86,31 @@ public class MovieDescActivity extends AppCompatActivity {
             assert tag != null;
             switch (tag){
                 case "nollywood":
-                    /*fetchVideoByPath(moviesAction, Paths.moviesNollywoodAction,Tag.movies_Nollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesNollywoodComedy,Tag.movies_Nollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesNollywoodTragedy,Tag.movies_Nollywood);*/
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesNollywoodRomance,Tag.movies_Nollywood);
                     break;
 
                 case "trending":
-/*
-                    fetchVideoByPath(moviesAction, Paths.moviesHollywoodAction,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesHollywoodComedy,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesBollywoodTragedy,Tag.movies_Bollywood);
-*/
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesBollywoodRomance,Tag.movies_Bollywood);
                      break;
 
                 case "pick-of-the-week":
-/*
-                    fetchVideoByPath(moviesAction, Paths.moviesBollywoodAction,Tag.movies_Bollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesBollywoodComedy,Tag.movies_Bollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesNollywoodTragedy,Tag.movies_Nollywood);
-*/
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesNollywoodRomance,Tag.movies_Nollywood);
                     break;
                 case "hollywood":
-/*
-                    fetchVideoByPath(moviesAction, Paths.moviesHollywoodAction,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesHollywoodComedy,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesHollywoodTragedy,Tag.movies_Hollywood);
-*/
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesHollywoodRomance,Tag.movies_Hollywood);
                         break;
 
                 case "bollywood":
-/*
-                    fetchVideoByPath(moviesAction, Paths.moviesBollywoodAction,Tag.movies_Bollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesBollywoodComedy,Tag.movies_Bollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesBollywoodTragedy,Tag.movies_Bollywood);
-*/
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesBollywoodRomance,Tag.movies_Bollywood);
                         break;
                 case "home-trending":
-/*
-                    fetchVideoByPath(moviesAction, Paths.moviesNollywoodAction,Tag.movies_Nollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesHollywoodComedy,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesBollywoodTragedy,Tag.movies_Bollywood);
-*/
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesNollywoodRomance,Tag.movies_Nollywood);
                     break;
                 case "home-billboard":
-/*
-                    fetchVideoByPath(moviesAction, Paths.moviesHollywoodAction,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesHollywoodComedy,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesBollywoodTragedy,Tag.movies_Bollywood);
-*/
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesNollywoodRomance,Tag.movies_Nollywood);
                     break;
                 case "documentary":
-/*
-                    fetchVideoByPath(moviesAction, Paths.moviesNollywoodAction,Tag.movies_Nollywood);
-                    fetchVideoByPath(moviesComedy, Paths.moviesHollywoodComedy,Tag.movies_Hollywood);
-                    fetchVideoByPath(moviesTragedy, Paths.moviesHollywoodTragedy,Tag.movies_Hollywood);
-*/
+
                     fetchVideoByPath(moviesRelatedVideos, Paths.moviesDocumentary,Tag.movies_Documentary);
                     break;
 
@@ -228,13 +183,9 @@ public class MovieDescActivity extends AppCompatActivity {
                 videoModel.setVideoDate(VideoHelper.years(Long.parseLong(videoDate)));
                 videoModel.setVideoThumbNail(thumbnails);
 
-//                audioModel.setArtistSong(album);
-                //  audioModel.setArtistPath(path);
-
 
                 arrayVideo.add(videoModel);
                 Log.v(" videoDuration :%s", videoDuration);
-//                Log.v(" videoTitle :%s", videoTitle);
                 Log.v(" Video path :%s", path);
                 Log.v(" Name :%s", name);
 
