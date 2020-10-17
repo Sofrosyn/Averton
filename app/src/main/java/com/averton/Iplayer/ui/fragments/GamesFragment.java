@@ -47,10 +47,10 @@ public class GamesFragment extends Fragment {
 
     private void initAction(){
 
-        playWhot.setOnClickListener(v -> {launchGames("com.tonierlro.naijawhotfree");});
-        playFruitNinja.setOnClickListener(v -> {launchGames("com.halfbrick.fruitninjafree");});
-        playChess.setOnClickListener(v -> {launchGames("uk.co.aifactory.chessfree");});
-        playCandyCrush.setOnClickListener(v -> {launchGames("com.king.candycrushsaga");});
+        playWhot.setOnClickListener(v -> launchGames("com.tonielrosoft.naijawhotfree"));
+        playFruitNinja.setOnClickListener(v -> launchGames("com.halfbrick.fruitninjafree"));
+        playChess.setOnClickListener(v -> launchGames("uk.co.aifactory.chessfree"));
+        playCandyCrush.setOnClickListener(v -> launchGames("com.king.candycrushsaga"));
 
     }
 

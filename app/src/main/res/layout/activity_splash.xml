@@ -8,6 +8,9 @@
     android:background="@color/black"
 
     tools:context=".ui.activities.SplashActivity">
+    <ImageView
+        android:layout_width="match_parent" android:src="@drawable/ibom_air"
+        android:layout_height="match_parent"/>
 
     <ImageView
         android:layout_width="match_parent" android:layout_centerInParent="true"
@@ -19,7 +22,7 @@
 
         <TextView
             android:layout_width="wrap_content" android:text="ENTER" android:textColor="@android:color/white" android:fontFamily="@font/averton"
-            android:layout_height="wrap_content" android:layout_gravity="center" android:textSize="32dp" android:textStyle="bold"/>
+            android:layout_height="wrap_content" android:layout_gravity="center" android:textSize="32sp" android:textStyle="bold"/>
 
 
     </androidx.cardview.widget.CardView>

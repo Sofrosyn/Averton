@@ -1,10 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             tools:context=".ui.fragments.NewsFragment">
+    tools:context=".ui.fragments.NewsFragment">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
@@ -12,7 +11,7 @@
             android:layout_width="match_parent" android:layout_marginTop="8dp"
             android:layout_height="wrap_content">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Books" android:textSize="40dp"
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Books" android:textSize="40sp"
                   android:fontFamily="@font/nexa" android:layout_centerHorizontal="true" android:textStyle="bold" />
 
             <ImageView
@@ -33,7 +32,7 @@
                         android:id="@+id/relative_layout_popular_f"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:weightSum="5"
+                        android:weightSum="1"
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="8dp"
                         android:orientation="vertical"
@@ -44,6 +43,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:orientation="vertical">
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
@@ -66,6 +66,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:orientation="vertical">
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/white" android:fontFamily="@font/open_sans"
@@ -83,11 +84,12 @@
                     <!--End Pick of the Week-->
 
 
-                    <!--Bill board 100-->
+                    <!--Fashion-->
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:layout_marginTop="4dp"
                             android:orientation="vertical">
 
@@ -108,11 +110,12 @@
 
 
 
-                    <!--Hottest Vibes 100-->
+                    <!--Business Weekly-->
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:layout_marginTop="4dp"
                             android:orientation="vertical">
 
@@ -132,7 +135,7 @@
                     </LinearLayout>
                     <!--End Hottest Vibes 100-->
 
-                    <!--Local news-->
+                    <!--Books-->
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"

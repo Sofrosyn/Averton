@@ -119,39 +119,33 @@ public class MoviePlayerActivity extends Swipper {
 
         // Listener for onPrepared() event (runs after the media is prepared).
         mVideoView.setOnPreparedListener(
-                new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer -> {
 
-                        // Hide buffering message.
-                        mBufferingTextView.setVisibility(VideoView.INVISIBLE);
+                    // Hide buffering message.
+                    mBufferingTextView.setVisibility(VideoView.INVISIBLE);
 
-                        // Restore saved position, if available.
-                        if (mCurrentPosition > 0) {
-                            mVideoView.seekTo(mCurrentPosition);
-                        } else {
-                            // Skipping to 1 shows the first frame of the video.
-                            mVideoView.seekTo(1);
-                        }
-
-                        // Start playing!
-                        mVideoView.start();
+                    // Restore saved position, if available.
+                    if (mCurrentPosition > 0) {
+                        mVideoView.seekTo(mCurrentPosition);
+                    } else {
+                        // Skipping to 1 shows the first frame of the video.
+                        mVideoView.seekTo(1);
                     }
+
+                    // Start playing!
+                    mVideoView.start();
                 });
 
         // Listener for onCompletion() event (runs after media has finished
         // playing).
         mVideoView.setOnCompletionListener(
-                new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        Toast.makeText(MoviePlayerActivity.this,
-                                R.string.toast_message,
-                                Toast.LENGTH_SHORT).show();
+                mediaPlayer -> {
+                    Toast.makeText(MoviePlayerActivity.this,
+                            R.string.toast_message,
+                            Toast.LENGTH_SHORT).show();
 
-                        // Return the video position to the start.
-                        mVideoView.seekTo(0);
-                    }
+                    // Return the video position to the start.
+                    mVideoView.seekTo(0);
                 });
     }
 

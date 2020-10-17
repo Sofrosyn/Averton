@@ -1,8 +1,5 @@
 package com.averton.Iplayer.entity;
 
-import java.io.File;
-import java.nio.file.Files;
-
 public class Analytics {
     public String MediaType;
     public String MediaName;

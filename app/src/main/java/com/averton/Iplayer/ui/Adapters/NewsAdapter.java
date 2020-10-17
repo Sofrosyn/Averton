@@ -15,12 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.MetadataExtractor;
-import com.averton.Iplayer.Utils.Paths;
 import com.averton.Iplayer.entity.News;
 import com.averton.Iplayer.ui.activities.ReadNewsActivity;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -73,6 +69,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.viewHolder> {
 
         Glide.with(mContext).setDefaultRequestOptions(requestOptions).load(Paths.imagesNewsThumbnail+news.getNewsHeadline()).thumbnail(0.5f).into(holder.circleImageView);
 */
+
+/*TODO: Implement Background task for bitmap loading  */
+
 
         try {
             extractor.generatePdfThumbnail(holder.circleImageView,mContext, Uri.fromFile(new File(news.getNewsPath())));

@@ -102,6 +102,7 @@ public class MoviesFragment extends Fragment {
 
 
 
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             requestStoragePermission();
 
@@ -111,11 +112,15 @@ public class MoviesFragment extends Fragment {
             fetchVideoByPath(recycler_view_movies_pickOfTheWeek,Paths.moviesPickOfTheWeek,Tag.movies_pickOfTheWeek);
             fetchVideoByPath(recycler_view_movies_documentary,Paths.moviesDocumentary,Tag.movies_Documentary);
             fetchVideoByPath(recycler_view_movies_bollywood,Paths.moviesBollywoodHome,Tag.movies_Bollywood);
-           fetchVideoByPath(recycler_view_movies_nollywood,Paths.moviesNollywoodHome,Tag.movies_Nollywood);
+            fetchVideoByPath(recycler_view_movies_nollywood,Paths.moviesNollywoodHome,Tag.movies_Nollywood);
             fetchVideoByPath(recycler_view_movies_hollywood,Paths.moviesHollywoodHome,Tag.movies_Hollywood);
         }
 
         Log.v("Adapter","adapter showing");
+
+
+
+
 
     }
 
@@ -230,6 +235,11 @@ public class MoviesFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+
+
+
+
         stopPlayer();
 
         playThriller();
@@ -261,15 +271,10 @@ stopPlayer();
     public void playThriller(){
        thriller_video.setVideoPath(thriller);
 
-        thriller_video.setOnPreparedListener(mp -> {
-
-            thriller_video.start();
-        });
+        thriller_video.setOnPreparedListener(mp -> thriller_video.start());
 
 
-        thriller_video.setOnCompletionListener(mp -> {
-            thriller_video.start();
-        });
+        thriller_video.setOnCompletionListener(mp -> thriller_video.start());
 
 
     }

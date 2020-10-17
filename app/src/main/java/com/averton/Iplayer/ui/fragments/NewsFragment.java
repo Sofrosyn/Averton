@@ -13,7 +13,7 @@ import android.webkit.MimeTypeMap;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.averton.Iplayer.R;
@@ -69,25 +69,29 @@ public class NewsFragment extends Fragment {
 
 
 
-        //            loadNews();
 
-        loadNewsPath(recycler_view_news_books, Paths.newsBooks);
+
+      /*  loadNewsPath(recycler_view_news_books, Paths.newsBooks);
         loadNewsPath(recycler_view_news_business_weekly,Paths.newsBusinessWeek);
         loadNewsPath(recycler_view_news_fashion_magazine,Paths.newsFashion);
         loadNewsPath(recycler_view_news_international,Paths.newsInternational);
         loadNewsPath(recycler_view_news_local,Paths.newsLocal);
+*/
 
 
+        loadNewsPath(recycler_view_news_books, Paths.newsAll);
+
+        //loadNews();
     }
 
     private void loadNews(){
 
         newsArrayList = new ArrayList<>();
-
+        newsArrayList.clear();
         String pdf = MimeTypeMap.getSingleton().getMimeTypeFromExtension("pdf");
         String where = MediaStore.Files.FileColumns.MIME_TYPE + "=?";
         String[] args = new String[]{pdf};
-        Uri table = MediaStore.Files.getContentUri("external");
+        Uri table = MediaStore.Files.getContentUri("External");
 
         String[] projection = {MediaStore.Files.FileColumns.DATA
         };
@@ -96,6 +100,7 @@ public class NewsFragment extends Fragment {
 
         if (c != null) {
             while (c.moveToNext()) {
+
 
                 News news = new News();
                 String path = c.getString(0);
@@ -120,16 +125,16 @@ public class NewsFragment extends Fragment {
         }
 
         newsAdapter = new NewsAdapter(getActivity(),newsArrayList);
-        recycler_view_news_international.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        recycler_view_news_international.setItemAnimator(new DefaultItemAnimator());
-        recycler_view_news_international.setHasFixedSize(true);
-        recycler_view_news_international.setVerticalScrollBarEnabled(true);
-        recycler_view_news_international.setVerticalScrollbarPosition(View.SCROLLBAR_POSITION_RIGHT);
-        recycler_view_news_international.setVerticalFadingEdgeEnabled(true);
+        recycler_view_news_books.setLayoutManager(new GridLayoutManager(getActivity(),6));
+        recycler_view_news_books.setItemAnimator(new DefaultItemAnimator());
+        recycler_view_news_books.setHasFixedSize(true);
+        recycler_view_news_books.setVerticalScrollBarEnabled(true);
+        recycler_view_news_books.setVerticalScrollbarPosition(View.SCROLLBAR_POSITION_RIGHT);
+        recycler_view_news_books.setVerticalFadingEdgeEnabled(true);
 
 
 
-        recycler_view_news_international.setAdapter(newsAdapter);
+        recycler_view_news_books.setAdapter(newsAdapter);
 
 
         Log.v("Adapter","adapter showing");
@@ -179,7 +184,8 @@ public class NewsFragment extends Fragment {
         }
 
         newsAdapter = new NewsAdapter(getActivity(),newsArrayList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+      //  recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        recycler_view_news_books.setLayoutManager(new GridLayoutManager(getActivity(),6));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         recyclerView.setVerticalScrollBarEnabled(true);
@@ -201,5 +207,7 @@ public class NewsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        videoHelper.toastMessage(getActivity(),"Scroll left for more books");  }
+        videoHelper.toastMessage(getActivity(),"Scroll left for more books");
+
+    }
 }

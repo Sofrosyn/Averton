@@ -62,7 +62,7 @@ public class MetadataExtractor {
             Bitmap bitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
 
             pdfiumCore.renderPageBitmap(pdfDocument,bitmap,PageNum,0,0,width,height);
-            imageView.setImageBitmap(bitmap);
+
 
             Glide.with(context).asBitmap().load(bitmap).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(imageView);
 

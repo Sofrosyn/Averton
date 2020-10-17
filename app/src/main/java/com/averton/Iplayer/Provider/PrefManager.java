@@ -1,9 +1,5 @@
 package com.averton.Iplayer.Provider;
 
-/**
- * Created by Tamim on 30/09/2017.
- */
-
 import android.content.Context;
 import android.content.SharedPreferences;
 

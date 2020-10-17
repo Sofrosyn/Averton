@@ -25,7 +25,7 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="try_again">TRY AGAIN</string>
     <string name="error_server">Check your internet connexion</string>
@@ -38,7 +38,7 @@
     <string name="now_time">Now</string>
     <string name="off">Off</string>
     <string name="on">On</string>
-    <string name="loading_subtitles">Loading subtitles ... </string>
+    <string name="loading_subtitles">Loading subtitles … </string>
     <string name="for_you">For you</string>
     <string name="search_about_actors">Search about actors here</string>
     <string name="account_disabled">This account has been disabled</string>

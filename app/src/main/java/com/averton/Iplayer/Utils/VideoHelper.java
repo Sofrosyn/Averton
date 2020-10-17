@@ -9,19 +9,11 @@ import android.provider.Settings;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import com.averton.Iplayer.entity.Analytics;
 
-import es.dmoral.toasty.Toasty;
 import io.paperdb.Paper;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -86,9 +78,7 @@ public class VideoHelper {
             intent.setData(uri);
             context.startActivity(intent);
         });
-        alertBuilder.setNegativeButton("Cancel", (dialog, which) -> {
-           dialog.cancel();
-        });
+        alertBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
         AlertDialog alert = alertBuilder.create();
         alert.show();
     }

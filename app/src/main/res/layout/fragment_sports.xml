@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.SportsFragment">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
@@ -16,7 +15,7 @@
                 android:layout_width="50dp" android:src="@drawable/logo" android:scaleType="fitCenter"
                 android:layout_height="50dp" android:layout_marginLeft="8dp" android:visibility="gone"/>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sports" android:textSize="40dp"
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sports" android:textSize="40sp"
                 android:fontFamily="@font/nexa" android:layout_gravity="center_horizontal" android:textStyle="bold" android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
@@ -30,7 +29,7 @@
                        android:layout_alignParentStart="true" android:layout_alignParentEnd="true"/>
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AVERTON" android:textColor="@color/red" android:fontFamily="@font/averton" android:layout_alignParentRight="true"
-                      android:textStyle="bold" android:textSize="15dp" android:layout_margin="16dp" android:id="@+id/averton"  android:visibility="gone"/>
+                      android:textStyle="bold" android:textSize="15sp" android:layout_margin="16dp" android:id="@+id/averton"  android:visibility="gone"/>
 
         </RelativeLayout>
 

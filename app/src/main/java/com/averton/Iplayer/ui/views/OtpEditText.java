@@ -47,14 +47,11 @@ public class OtpEditText extends AppCompatEditText {
         mLineSpacing = multi * mLineSpacing; //convert to pixels for our density
         mNumChars = mMaxLength;
 
-        super.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // When tapped, move cursor to end of text.
-                setSelection(getText().length());
-                if (mClickListener != null) {
-                    mClickListener.onClick(v);
-                }
+        super.setOnClickListener(v -> {
+            // When tapped, move cursor to end of text.
+            setSelection(getText().length());
+            if (mClickListener != null) {
+                mClickListener.onClick(v);
             }
         });
     }

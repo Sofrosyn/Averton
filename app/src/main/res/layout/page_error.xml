@@ -16,18 +16,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:tint="@color/white"
                 android:padding="10dp"
                 app:srcCompat="@drawable/ic_signal_wifi_off"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                app:tint="@color/white" />
             <TextView
                 android:textColor="@color/white"
                 android:shadowColor="#ffffff"
                 android:shadowDy="1"
                 android:shadowDx="1"
                 android:shadowRadius="5"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:text="@string/error_server"

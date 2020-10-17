@@ -57,6 +57,7 @@ public class Paths {
    public static final String newsLocal = "/extSdCard/AVERTON/News/Local";
    public static final String newsBusinessWeek = "/extSdCard/AVERTON/News/BusinessWeek";
    public static final String newsFashion = "/extSdCard/AVERTON/News/FashionMagazine";
+   public static final String newsAll = "/extSdCard/AVERTON/News/All";
 
 
 

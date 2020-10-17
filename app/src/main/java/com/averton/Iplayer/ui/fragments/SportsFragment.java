@@ -237,9 +237,7 @@ stopPlayer();
 
     public void playThriller(){
         thriller_video.setVideoPath(THRILLERVIDEO);
-        thriller_video.setOnPreparedListener(mp -> {
-            thriller_video.start();
-        });
+        thriller_video.setOnPreparedListener(mp -> thriller_video.start());
 
             thriller_video.setOnCompletionListener(mp -> thriller_video.start());
     }

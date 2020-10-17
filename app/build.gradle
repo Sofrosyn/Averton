@@ -89,6 +89,7 @@ dependencies {
 
 
     implementation 'com.github.greenfrvr:rubber-loader:1.1.2@aar'
+    implementation 'com.arasthel:asyncjob-library:1.0.3'
 
 
 

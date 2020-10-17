@@ -8,7 +8,7 @@
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/dark_gray</item>
         <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
-
+        <item name="android:windowFullscreen">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:fontFamily">@font/font</item>
