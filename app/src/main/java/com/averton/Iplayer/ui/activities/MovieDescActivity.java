@@ -48,6 +48,7 @@ public class MovieDescActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
         toolbar = findViewById(R.id.movies_description_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         intent = getIntent();
 
         initViews();

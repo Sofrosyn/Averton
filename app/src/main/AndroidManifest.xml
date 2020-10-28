@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     <uses-permission android:name="com.android.vending.BILLING"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
 
     <application
         android:name="com.averton.Iplayer.MyApplication"
@@ -90,7 +90,7 @@
                   android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"
                   android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity android:name=".ui.activities.MovieDescActivity"
-            android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"/>
+            android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape" android:parentActivityName=".ui.activities.HomeActivity"/>
 
 
     </application>
