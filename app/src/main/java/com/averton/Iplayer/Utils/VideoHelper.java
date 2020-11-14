@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.averton.Iplayer.entity.Analytics;
 
+import es.dmoral.toasty.Toasty;
 import io.paperdb.Paper;
 
 import java.io.File;
@@ -111,12 +112,14 @@ public void writeToFile(Analytics analytic,String data) {
 
 
         public void toastMessage(Context context, String message){
+/*
 
             Toast toast= Toast.makeText(context,
                     message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
             toast.show();
-
+*/
+            Toasty.info(context,message,Toasty.LENGTH_LONG).show();
         }
 
 

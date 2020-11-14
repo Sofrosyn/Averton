@@ -126,7 +126,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.music_activity_toolBar);
         toolbar.setTitle("Music Player");
         setSupportActionBar(toolbar);
-
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
          db = FirebaseFirestore.getInstance();
 
             initViews();

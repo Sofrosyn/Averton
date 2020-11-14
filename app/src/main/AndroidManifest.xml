@@ -8,8 +8,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
-    <uses-permission android:name="com.android.vending.BILLING"/>
+
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
 
@@ -36,20 +36,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-        
-        <receiver android:name="com.averton.Iplayer.ActivityRunOnStartUp"
-                  android:enabled="true"
-                  android:exported="true"
-                android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
-<intent-filter>
-    <action android:name="android.intent.action.BOOT_COMPLETED"/>
-    <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-    <category android:name="android.intent.category.DEFAULT" />
-
-</intent-filter>
-
-
-        </receiver>
 
 
         <activity
@@ -59,9 +45,9 @@
                 android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <activity
-                android:name="com.averton.Iplayer.ui.activities.MusicPlayerActivity"
+                android:name="com.averton.Iplayer.ui.activities.MusicPlayerActivity" android:parentActivityName=".ui.activities.HomeActivity"
                 android:theme="@style/Theme.Design.NoActionBar" android:screenOrientation="landscape"
-                android:configChanges="orientation|screenSize|keyboardHidden"/>
+                android:configChanges="orientation|screenSize|keyboardHidden" />
 
 
 

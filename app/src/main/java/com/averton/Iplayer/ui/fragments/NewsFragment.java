@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -40,7 +41,7 @@ public class NewsFragment extends Fragment {
     private RecyclerView recycler_view_news_business_weekly;
     private RecyclerView recycler_view_news_books;
     private VideoHelper videoHelper;
-
+    private ProgressBar progressBar;
 
 
     public NewsFragment() {
@@ -66,7 +67,7 @@ public class NewsFragment extends Fragment {
         recycler_view_news_books = view.findViewById(R.id.recycler_view_news_books);
         recycler_view_news_business_weekly = view.findViewById(R.id.recycler_view_news_business_weekly);
         recycler_view_news_fashion_magazine = view.findViewById(R.id.recycler_view_news_fashion_magazine);
-
+        progressBar = view.findViewById(R.id.fragment_news_progress);
 
 
 
@@ -79,7 +80,7 @@ public class NewsFragment extends Fragment {
 */
 
 
-        loadNewsPath(recycler_view_news_books, Paths.newsAll);
+
 
         //loadNews();
     }
@@ -87,7 +88,7 @@ public class NewsFragment extends Fragment {
     private void loadNews(){
 
         newsArrayList = new ArrayList<>();
-        newsArrayList.clear();
+
         String pdf = MimeTypeMap.getSingleton().getMimeTypeFromExtension("pdf");
         String where = MediaStore.Files.FileColumns.MIME_TYPE + "=?";
         String[] args = new String[]{pdf};
@@ -124,7 +125,7 @@ public class NewsFragment extends Fragment {
             c.close();
         }
 
-        newsAdapter = new NewsAdapter(getActivity(),newsArrayList);
+        newsAdapter = new NewsAdapter(getActivity(),newsArrayList,progressBar);
         recycler_view_news_books.setLayoutManager(new GridLayoutManager(getActivity(),6));
         recycler_view_news_books.setItemAnimator(new DefaultItemAnimator());
         recycler_view_news_books.setHasFixedSize(true);
@@ -145,9 +146,9 @@ public class NewsFragment extends Fragment {
     private void loadNewsPath(RecyclerView recyclerView ,String newsPath) {
 
 
-
+//progressBar.setVisibility(View.VISIBLE);
         newsArrayList = new ArrayList<>();
-
+        newsArrayList.clear();
         String pdf = MimeTypeMap.getSingleton().getMimeTypeFromExtension("pdf");
         String selection = MediaStore.Files.FileColumns.DATA +" like ? ";
         String[] selectionArgs =new String [] {"%"+newsPath+"%"};
@@ -183,7 +184,7 @@ public class NewsFragment extends Fragment {
             c.close();
         }
 
-        newsAdapter = new NewsAdapter(getActivity(),newsArrayList);
+        newsAdapter = new NewsAdapter(getActivity(),newsArrayList,progressBar);
       //  recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         recycler_view_news_books.setLayoutManager(new GridLayoutManager(getActivity(),6));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -207,6 +208,7 @@ public class NewsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        loadNewsPath(recycler_view_news_books, Paths.newsAll);
         videoHelper.toastMessage(getActivity(),"Scroll left for more books");
 
     }

@@ -2,11 +2,14 @@ package com.averton.Iplayer.ui.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,9 +20,13 @@ import com.averton.Iplayer.R;
 import com.averton.Iplayer.Utils.MetadataExtractor;
 import com.averton.Iplayer.entity.News;
 import com.averton.Iplayer.ui.activities.ReadNewsActivity;
+import com.bumptech.glide.Glide;
+import com.shockwave.pdfium.PdfDocument;
+import com.shockwave.pdfium.PdfiumCore;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.viewHolder> {
@@ -27,11 +34,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.viewHolder> {
     private final Context mContext;
     private final ArrayList<News> newsArrayList;
     private MetadataExtractor extractor;
+    private ProgressBar progressBar;
+    private Bitmap bitmap;
+    private Thread thread;
 
 
-    public NewsAdapter(Context mContext, ArrayList<News> newsArrayList) {
+    public NewsAdapter(Context mContext, ArrayList<News> newsArrayList, ProgressBar progressBar) {
         this.mContext = mContext;
         this.newsArrayList = newsArrayList;
+        this.progressBar = progressBar;
     }
 
     public class viewHolder extends RecyclerView.ViewHolder{
@@ -74,7 +85,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.viewHolder> {
 
 
         try {
-            extractor.generatePdfThumbnail(holder.circleImageView,mContext, Uri.fromFile(new File(news.getNewsPath())));
+            Glide.with(mContext).asBitmap().load(generatePdfThumbnail(mContext, Uri.fromFile(new File(news.getNewsPath())))).into(holder.circleImageView);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -93,5 +104,42 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.viewHolder> {
         return newsArrayList.size();
     }
 
+    public Bitmap generatePdfThumbnail(Context context, Uri pdfUri ) throws FileNotFoundException {
+
+
+
+
+
+        int PageNum = 0;
+
+      //  progressBar.setVisibility(View.VISIBLE);
+        try {
+            ParcelFileDescriptor pd = context.getContentResolver().openFileDescriptor(pdfUri, "r");
+            PdfiumCore pdfiumCore = new PdfiumCore(context);
+
+            PdfDocument pdfDocument = pdfiumCore.newDocument(pd);
+            pdfiumCore.openPage(pdfDocument,PageNum);
+
+            int width = pdfiumCore.getPageWidthPoint(pdfDocument,PageNum);
+            int height = pdfiumCore.getPageHeightPoint(pdfDocument,PageNum);
+            bitmap = Bitmap.createBitmap(width,height,Bitmap.Config.RGB_565);
+
+            pdfiumCore.renderPageBitmap(pdfDocument,bitmap,PageNum,0,0,width,height);
+
+//                    Glide.with(context).asBitmap().load(bitmap).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(imageView);
+
+            pdfiumCore.closeDocument(pdfDocument);
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+
+
+
+
+        return  bitmap;
+
+    }//end of method
 
 }

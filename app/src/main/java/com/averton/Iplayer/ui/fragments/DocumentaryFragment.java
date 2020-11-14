@@ -42,19 +42,10 @@ public class DocumentaryFragment extends Fragment {
 
 
     private View view;
-
-
     private RecyclerView recycler_view_documentary;
-
-
-
     VideoHelper videoHelper;
-
-
     private MovieAdapter movieAdapter;
-
     private  ArrayList<Video> arrayVideo;
-
 
 
     public DocumentaryFragment() {
@@ -87,6 +78,7 @@ public class DocumentaryFragment extends Fragment {
             requestStoragePermission();
 
         }else{
+            fetchVideoByPath(recycler_view_documentary,Paths.moviesDocumentary,Tag.movies_Documentary);
 
         }
 

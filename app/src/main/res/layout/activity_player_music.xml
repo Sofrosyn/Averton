@@ -5,7 +5,7 @@
                 android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
                 tools:context="com.averton.Iplayer.ui.activities.MusicPlayerActivity">
 
-    <ImageView android:layout_centerInParent="true" android:layout_height="match_parent" android:layout_width="match_parent"
+    <ImageView android:layout_centerInParent="true" android:layout_height="wrap_content" android:layout_width="match_parent"
     android:src="@drawable/album_placeholder" android:id="@+id/musi_player_thumbnail" />
 
 
@@ -116,7 +116,7 @@
 
     </LinearLayout>
 
-    <com.google.android.material.appbar.MaterialToolbar android:layout_height="wrap_content" android:layout_width="match_parent" android:minHeight="?attr/actionBarSize"
-     android:id="@+id/music_activity_toolBar" android:gravity="center" />
+    <androidx.appcompat.widget.Toolbar android:layout_height="wrap_content" android:layout_width="match_parent"
+     android:id="@+id/music_activity_toolBar"  />
 
 </RelativeLayout>
